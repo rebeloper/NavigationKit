@@ -8,6 +8,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-class Navigation: ObservableObject {
+public class Navigation: ObservableObject {
     @Published var isPushRootActive: Bool = false
+    public init() { }
 }
