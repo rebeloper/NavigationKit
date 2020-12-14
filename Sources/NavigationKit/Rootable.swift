@@ -10,7 +10,7 @@ import SwiftUI
 @available(iOS 13.0, *)
 struct Rootable: ViewModifier {
     
-    let navigation = Navigation()
+    var navigation: Navigation
     
     func body(content: Content) -> some View {
         content.environmentObject(navigation)
