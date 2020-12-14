@@ -46,12 +46,59 @@ struct RootView: View {
                 Text("Push Second View").pushes(SecondView())
                 Text("Push Second View as Root").pushesAsRoot(SecondView())
                 Text("Present Second View").presents(SecondView())
+                Text("Present Second View with onDismiss callback").presents(SecondView(), onDismiss: {
+                    print("Did dismiss SecondView")
+                })
                 Text("Present Second View in NavigationView").presents(NavigationView { SecondView() })
                 Spacer()
             }
             .navigationTitle("Root View")
         }
-        
+    }
+}
+```
+
+### SecondView
+```
+struct SecondView: View {
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Dismiss").dismisses()
+            Text("Push Third View").pushes(ThirdView())
+//            Text("Push Third View as Root").pushesAsRoot(ThirdView()) // only one view is allowed be the root of the navigation stack; if you comment in this line than you have to comment out the "pushesAsRoot" line in RootView
+            Text("Present Third View").presents(ThirdView())
+            Spacer()
+        }
+        .navigationTitle("Second View")
+    }
+}
+```
+
+### ThirdView
+```
+struct ThirdView: View {
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Dismiss").dismisses()
+            Text("Push Fourth View").pushes(FourthView())
+            Text("Present Fourth View").presents(FourthView())
+            Spacer()
+        }
+        .navigationTitle("Third View")
+    }
+}
+```
+
+### FourthView
+```
+struct FourthView: View {
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Dismiss").dismisses()
+            Text("Dismiss to Root").dismissesToRoot()
+            Spacer()
+        }
+        .navigationTitle("Fourth View")
     }
 }
 ```
