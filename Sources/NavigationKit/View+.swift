@@ -10,8 +10,8 @@ import SwiftUI
 @available(iOS 13.0, *)
 extension View {
     
-    public func navigatable() -> some View {
-        modifier(Navigatable())
+    public func rootable(_ navigation: Navigation = Navigation()) -> some View {
+        modifier(Rootable(navigation: navigation))
     }
     
     public func pushes<Destination: View>(_ destination: Destination) -> some View {
