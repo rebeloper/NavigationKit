@@ -14,3 +14,62 @@ Download and include the `NavigationKit` folder and files in your codebase.
 ### 📲 Requirements
 - iOS 13+
 - Swift 5
+
+## 👉 Import
+
+Import `NavigationKit` into your `View`
+
+```
+import NavigationKit
+```
+
+## 🧳 Features
+
+Here's the list of navigation actions  that you can do with `NavigationKit`:
+[x] push
+[x] push as root
+[x] present
+[x] presnt as root
+[x] dismiss
+[x] dismiss to root
+
+## 🛠 How to use
+
+In the views below you will be able to see all the features `NavigationKit` has.
+
+### RootView
+```
+struct RootView: View {
+    var body: some View {
+        NavigationView {
+            VStack(spacing: 12) {
+                Text("Push Second View").pushes(SecondView())
+                Text("Push Second View as Root").pushesAsRoot(SecondView())
+                Text("Present Second View").presents(SecondView())
+                Text("Present Second View in NavigationView").presents(NavigationView { SecondView() })
+                Spacer()
+            }
+            .navigationTitle("Root View")
+        }
+        
+    }
+}
+```
+
+## ✍️ Contact
+
+<a href="https://rebeloper.com/">rebeloper.com</a> / 
+<a href="https://www.youtube.com/rebeloper/">YouTube</a> / 
+<a href="https://store.rebeloper.com/">Shop</a> / 
+<a href="https://rebeloper.com/mentoring">Mentoring</a>
+
+## 📃 License
+
+The MIT License (MIT)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
