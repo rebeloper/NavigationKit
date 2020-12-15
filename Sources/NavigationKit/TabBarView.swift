@@ -8,14 +8,14 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-struct TabBarView<RootView: View, TabItemView: View>: View {
+public struct TabBarView<RootView: View, TabItemView: View>: View {
     
     var rootView: () -> RootView
     var tabItemView: () -> TabItemView
     var navigation: Navigation = Navigation()
     var tabTag: Int
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             rootView()
         }
