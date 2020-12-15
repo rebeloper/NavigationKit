@@ -15,6 +15,10 @@ Download and include the `NavigationKit` folder and files in your codebase.
 - iOS 13+
 - Swift 5
 
+## 🎬 Video Tutorial
+
+<p><a href="https://www.youtube.com/watch?v=FPvH3--Q3ys&list=PL_csAAO9PQ8Yj7ZU7n2IJjIsqcFaLcvJN&index=4">NavigationKit on YouTube</a></p>
+
 ## 👉 Import
 
 Import `NavigationKit` into your `View`
@@ -26,81 +30,68 @@ import NavigationKit
 ## 🧳 Features
 
 Here's the list of navigation actions  that you can do with `NavigationKit`:
-[x] push
-[x] push as root
-[x] present
-[x] presnt as root
-[x] dismiss
-[x] dismiss to root
+- [X] present
+- [X] present with onDismiss callback
+- [X] push
+- [X] push as root
+- [X] dismiss to root
+- [X] dismiss
 
-## 🛠 How to use
+### Presents
 
-In the views below you will be able to see all the features `NavigationKit` has.
-
-### RootView
 ```
-struct RootView: View {
-    var body: some View {
-        NavigationView {
-            VStack(spacing: 12) {
-                Text("Push Second View").pushes(SecondView())
-                Text("Push Second View as Root").pushesAsRoot(SecondView())
-                Text("Present Second View").presents(SecondView())
-                Text("Present Second View with onDismiss callback").presents(SecondView(), onDismiss: {
-                    print("Did dismiss SecondView")
-                })
-                Text("Present Second View in NavigationView").presents(NavigationView { SecondView() })
-                Spacer()
-            }
-            .navigationTitle("Root View")
-        }
-    }
+Text("Present Second View").presents(SecondView())
+```
+
+### Presents with onDismiss callback
+
+```
+Text("Present Second View with onDismiss callback").presents(SecondView(), onDismiss: {
+    print("Did dismiss SecondView")
+})
+```
+
+### Pushes
+
+```
+NavigationView {
+    Text("Push Second View").pushes(SecondView())
 }
 ```
 
-### SecondView
+### Pushes as root
+
 ```
-struct SecondView: View {
-    var body: some View {
-        VStack(spacing: 12) {
-            Text("Dismiss").dismisses()
-            Text("Push Third View").pushes(ThirdView())
-//            Text("Push Third View as Root").pushesAsRoot(ThirdView()) // only one view is allowed be the root of the navigation stack; if you comment in this line than you have to comment out the "pushesAsRoot" line in RootView
-            Text("Present Third View").presents(ThirdView())
-            Spacer()
-        }
-        .navigationTitle("Second View")
-    }
-}
+NavigationView {
+    Text("Push Second View").pushesAsRoot(SecondView())
+}.rootable()
 ```
 
-### ThirdView
+### Dismisses to root
+
 ```
-struct ThirdView: View {
-    var body: some View {
-        VStack(spacing: 12) {
-            Text("Dismiss").dismisses()
-            Text("Push Fourth View").pushes(FourthView())
-            Text("Present Fourth View").presents(FourthView())
-            Spacer()
-        }
-        .navigationTitle("Third View")
-    }
-}
+Text("Dismiss to Root").dismissesToRoot()
 ```
 
-### FourthView
+### Dismisses
+
 ```
-struct FourthView: View {
-    var body: some View {
-        VStack(spacing: 12) {
-            Text("Dismiss").dismisses()
-            Text("Dismiss to Root").dismissesToRoot()
-            Spacer()
-        }
-        .navigationTitle("Fourth View")
+Text("Dismiss").dismisses()
+```
+
+### TabBarView
+
+Convenience `View` to construct tab bar views with already backed in `NavigationView`, `Navigation()` and `rootable()`.
+
+```
+TabBarView(rootView: {
+    Tab1RootView()
+}, tabItemView: {
+    VStack {
+        Image(systemName: "1.circle.fill")
+        Text("First Tab")
     }
-}
+}, tabTag: 0)
 ```
 
 ## ✍️ Contact
