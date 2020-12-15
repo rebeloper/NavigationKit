@@ -10,10 +10,10 @@ import SwiftUI
 @available(iOS 13.0, *)
 public struct TabBarView<RootView: View, TabItemView: View>: View {
     
-    var rootView: () -> RootView
-    var tabItemView: () -> TabItemView
-    var navigation: Navigation = Navigation()
-    var tabTag: Int
+    public var rootView: () -> RootView
+    public var tabItemView: () -> TabItemView
+    public var navigation: Navigation = Navigation()
+    public var tabTag: Int
     
     public var body: some View {
         NavigationView {
