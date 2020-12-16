@@ -34,6 +34,10 @@ extension View {
         modifier(DismissToRoot())
     }
     
+    public func dismissesNavigationViewSheet() -> some View {
+        return modifier(DismissNavigationViewSheet())
+    }
+    
     public func presents<Destination: View>(_ destination: Destination) -> some View {
         modifier(Present(destination: {
             destination
@@ -44,5 +48,13 @@ extension View {
         modifier(PresentOnDismiss(destination: {
             destination
         }, onDismiss: onDismiss, isPresented: false))
+    }
+    
+    public func presentsNavigationView<Destination: View>(_ destination: Destination) -> some View {
+        modifier(PresentNavigationView(destination: {
+            NavigationView {
+                destination
+            }
+        }, isPresented: false))
     }
 }

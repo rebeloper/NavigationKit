@@ -30,3 +30,15 @@ struct DismissToRoot: ViewModifier {
         }
     }
 }
+
+@available(iOS 13.0, *)
+struct DismissNavigationViewSheet: ViewModifier {
+    
+    @Environment(\.showingSheet) var showingSheet
+    
+    func body(content: Content) -> some View {
+        content.onTapGesture {
+            showingSheet?.wrappedValue = false
+        }
+    }
+}
