@@ -49,3 +49,20 @@ struct PresentNavigationView<Destination: View>: ViewModifier {
         }
     }
 }
+
+@available(iOS 13.0, *)
+struct PresentNavigationViewOnDismiss<Destination: View>: ViewModifier {
+    
+    var destination: () -> Destination
+    var onDismiss: (() -> Void)?
+    @State var isPresented: Bool
+    
+    func body(content: Content) -> some View {
+        content.onTapGesture {
+            isPresented = true
+        }
+        .sheet(isPresented: $isPresented, onDismiss: onDismiss) {
+            destination().environment(\.showingSheet, $isPresented)
+        }
+    }
+}

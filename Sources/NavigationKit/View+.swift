@@ -38,23 +38,31 @@ extension View {
         return modifier(DismissNavigationViewSheet())
     }
     
-    public func presents<Destination: View>(_ destination: Destination) -> some View {
+    public func presents<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(Present(destination: {
             destination
         }, isPresented: false))
     }
     
-    public func presents<Destination: View>(_ destination: Destination, onDismiss: (() -> Void)?) -> some View {
+    public func presents<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true, onDismiss: (() -> Void)?) -> some View {
         modifier(PresentOnDismiss(destination: {
-            destination
+            destination.allowSwipeToDismiss(allowsSwipeToDismiss)
         }, onDismiss: onDismiss, isPresented: false))
     }
     
-    public func presentsNavigationView<Destination: View>(_ destination: Destination) -> some View {
+    public func presentsNavigationView<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(PresentNavigationView(destination: {
             NavigationView {
-                destination
+                destination.allowSwipeToDismiss(allowsSwipeToDismiss)
             }
         }, isPresented: false))
+    }
+    
+    public func presentsNavigationView<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true, onDismiss: (() -> Void)?) -> some View {
+        modifier(PresentNavigationViewOnDismiss(destination: {
+            NavigationView {
+                destination.allowSwipeToDismiss(allowsSwipeToDismiss)
+            }
+        }, onDismiss: onDismiss, isPresented: false))
     }
 }
