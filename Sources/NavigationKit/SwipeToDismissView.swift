@@ -67,7 +67,7 @@ extension View {
         self.background(SwipeToDismissView(dismissable: { false }))
     }
     
-    public func allowSwipeToDismiss(_ dismissable: Bool) -> some View {
+    public func allowsSwipeToDismiss(_ dismissable: Bool) -> some View {
         self.background(SwipeToDismissView(dismissable: { dismissable }))
     }
 }

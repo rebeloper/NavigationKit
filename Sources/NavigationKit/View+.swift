@@ -40,20 +40,20 @@ extension View {
     
     public func presents<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(Present(destination: {
-            destination
+            destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
         }, isPresented: false))
     }
     
     public func presents<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true, onDismiss: (() -> Void)?) -> some View {
         modifier(PresentOnDismiss(destination: {
-            destination.allowSwipeToDismiss(allowsSwipeToDismiss)
+            destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
         }, onDismiss: onDismiss, isPresented: false))
     }
     
     public func presentsNavigationView<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(PresentNavigationView(destination: {
             NavigationView {
-                destination.allowSwipeToDismiss(allowsSwipeToDismiss)
+                destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
             }
         }, isPresented: false))
     }
@@ -61,7 +61,7 @@ extension View {
     public func presentsNavigationView<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true, onDismiss: (() -> Void)?) -> some View {
         modifier(PresentNavigationViewOnDismiss(destination: {
             NavigationView {
-                destination.allowSwipeToDismiss(allowsSwipeToDismiss)
+                destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
             }
         }, onDismiss: onDismiss, isPresented: false))
     }
