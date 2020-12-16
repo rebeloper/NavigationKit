@@ -31,7 +31,10 @@ import NavigationKit
 
 Here's the list of navigation actions  that you can do with `NavigationKit`:
 - [X] present
+- [X] present with allowsSwipeToDismiss
 - [X] present with onDismiss callback
+- [X] present with NavigationView
+- [X] present with NavigationView and onDismiss callback
 - [X] push
 - [X] push as root
 - [X] dismiss to root
@@ -43,6 +46,12 @@ Here's the list of navigation actions  that you can do with `NavigationKit`:
 Text("Present Second View").presents(SecondView())
 ```
 
+### Presents with allowsSwipeToDismiss
+
+```
+Text("Present Second View (not swipeablbe)").presents(SecondView(), allowsSwipeToDismiss: false)
+```
+
 ### Presents with onDismiss callback
 
 ```
@@ -50,6 +59,28 @@ Text("Present Second View with onDismiss callback").presents(SecondView(), onDis
     print("Did dismiss SecondView")
 })
 ```
+
+### Presents with NavigationView
+
+```
+Text("Present Second View in NavigationView").presentsNavigationView(
+    SecondView().navigationBarTitleDisplayMode(.inline).disableSwipeToDismiss()
+)
+```
+
+Note: `disableSwipeToDismiss()` does the same as if you would have set `allowsSwipeToDismiss` to `false` in the `init`
+
+### Presents with NavigationView and onDismiss callback
+
+```
+Text("Present Second View in NavigationView with onDismiss callback").presentsNavigationView(
+    SecondView().navigationBarTitleDisplayMode(.inline).allowsSwipeToDismiss(false)
+) {
+    print("Did dismiss SecondView")
+}
+```
+
+Note: `allowsSwipeToDismiss(false)` does the same as if you would have set `allowsSwipeToDismiss` to `false` in the `init`
 
 ### Pushes
 
