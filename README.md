@@ -17,7 +17,7 @@ Download and include the `NavigationKit` folder and files in your codebase.
 
 ## 🎬 Video Tutorial
 
-<p><a href="https://www.youtube.com/watch?v=FPvH3--Q3ys&list=PL_csAAO9PQ8Yj7ZU7n2IJjIsqcFaLcvJN&index=4">NavigationKit on YouTube</a></p>
+<p><a href="https://www.youtube.com/watch?v=gk-sTNvOsR8&list=PL_csAAO9PQ8Yj7ZU7n2IJjIsqcFaLcvJN&index=4">SwiftUI Navigation - How to Navigate in SwiftUI Apps on YouTube</a></p>
 
 ## 👉 Import
 
