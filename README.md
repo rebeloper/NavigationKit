@@ -110,6 +110,16 @@ Text("Dismiss to Root").dismissesToRoot()
 Text("Dismiss").dismisses()
 ```
 
+### As Button
+
+Turn any view into a `Button`.
+
+```
+Text("Push Third View").pushes(ThirdView()).asButton()
+```
+
+Note: `asButton()` must be added right after the `.pushes(_:)` modifier.
+
 ### TabBarView
 
 Convenience `View` to construct tab bar views with already backed in `NavigationView`, `Navigation()` and `rootable()`.
