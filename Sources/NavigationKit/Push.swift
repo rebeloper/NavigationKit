@@ -11,16 +11,37 @@ import SwiftUI
 struct Push<Destination: View>: ViewModifier {
 
     var destination: () -> Destination
-    @State var isActive: Bool
+    @State var isActive: Bool = false
 
     func body(content: Content) -> some View {
-        ZStack {
-            content.onTapGesture {
-                isActive = true
-            }
-            NavigationLink(destination: destination(), isActive: $isActive) {
-                EmptyView()
-            }.isDetailLink(false)
+        ButtonNavigationLink(destination: destination()) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct ActionPush<Destination: View>: ViewModifier {
+
+    var destination: () -> Destination
+    var action: (NavigationToken) -> ()
+
+    func body(content: Content) -> some View {
+        ActionNavigationLink(destination: destination(), action: action) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct AsIsPush<Destination: View>: ViewModifier {
+
+    var destination: () -> Destination
+    @State var isActive: Bool = false
+
+    func body(content: Content) -> some View {
+        AsIsNavigationLink(destination: destination()) {
+            content
         }
     }
 }
@@ -39,48 +60,6 @@ struct PushAsRoot<Destination: View>: ViewModifier {
             NavigationLink(destination: destination(), isActive: $navigation.isPushRootActive) {
                 EmptyView()
             }.isDetailLink(false)
-        }
-    }
-}
-
-@available(iOS 13.0, *)
-struct ButtonPush<Destination: View>: ViewModifier {
-
-    var destination: () -> Destination
-    @State var isActive: Bool = false
-
-    func body(content: Content) -> some View {
-        
-        ButtonNavigationLink(destination: destination()) {
-            content
-        }
-        
-//        NavigationLink(destination: destination(), isActive: $isActive) {
-//            content.onTapGesture {
-//                isActive = true
-//            }
-//        }.isDetailLink(false)
-        
-//        ZStack {
-//            content.onTapGesture {
-//                isActive = true
-//            }
-//            NavigationLink(destination: destination(), isActive: $isActive) {
-//                EmptyView()
-//            }.isDetailLink(false)
-//        }
-    }
-}
-
-@available(iOS 13.0, *)
-struct ActionPush<Destination: View>: ViewModifier {
-
-    var destination: () -> Destination
-    var action: (NavigationToken) -> ()
-
-    func body(content: Content) -> some View {
-        ActionNavigationLink(destination: destination(), action: action) {
-            content
         }
     }
 }

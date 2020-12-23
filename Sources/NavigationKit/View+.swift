@@ -17,7 +17,19 @@ extension View {
     public func pushes<Destination: View>(_ destination: Destination) -> some View {
         modifier(Push(destination: {
             destination
-        }, isActive: false))
+        }))
+    }
+    
+    public func pushes<Destination: View>(_ destination: Destination, after action: @escaping (NavigationToken) -> ()) -> some View {
+        modifier(ActionPush(destination: {
+            destination
+        }, action: action))
+    }
+    
+    public func pushesAsIs<Destination: View>(_ destination: Destination) -> some View {
+        modifier(AsIsPush(destination: {
+            destination
+        }))
     }
     
     public func pushesAsRoot<Destination: View>(_ destination: Destination) -> some View {
@@ -66,15 +78,4 @@ extension View {
         }, onDismiss: onDismiss, isPresented: false))
     }
     
-    public func pushes<Destination: View>(_ destination: Destination, after action: @escaping (NavigationToken) -> ()) -> some View {
-        modifier(ActionPush(destination: {
-            destination
-        }, action: action))
-    }
-    
-    public func pushesAsButton<Destination: View>(_ destination: Destination) -> some View {
-        modifier(ButtonPush(destination: {
-            destination
-        }))
-    }
 }
