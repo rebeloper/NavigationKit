@@ -71,4 +71,10 @@ extension View {
             destination
         }, action: action))
     }
+    
+    public func pushesAsButton<Destination: View>(_ destination: Destination) -> some View {
+        modifier(ButtonPush(destination: {
+            destination
+        }))
+    }
 }

@@ -44,6 +44,24 @@ struct PushAsRoot<Destination: View>: ViewModifier {
 }
 
 @available(iOS 13.0, *)
+struct ButtonPush<Destination: View>: ViewModifier {
+
+    var destination: () -> Destination
+    @State var isActive: Bool = false
+
+    func body(content: Content) -> some View {
+        ZStack {
+            content.onTapGesture {
+                isActive = true
+            }
+            NavigationLink(destination: destination(), isActive: $isActive) {
+                EmptyView()
+            }.isDetailLink(false)
+        }
+    }
+}
+
+@available(iOS 13.0, *)
 struct ActionPush<Destination: View>: ViewModifier {
 
     var destination: () -> Destination
