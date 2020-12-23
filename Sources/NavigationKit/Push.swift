@@ -50,14 +50,25 @@ struct ButtonPush<Destination: View>: ViewModifier {
     @State var isActive: Bool = false
 
     func body(content: Content) -> some View {
-        ZStack {
-            content.onTapGesture {
-                isActive = true
-            }
-            NavigationLink(destination: destination(), isActive: $isActive) {
-                EmptyView()
-            }.isDetailLink(false)
+        
+        ButtonNavigationLink(destination: destination()) {
+            content
         }
+        
+//        NavigationLink(destination: destination(), isActive: $isActive) {
+//            content.onTapGesture {
+//                isActive = true
+//            }
+//        }.isDetailLink(false)
+        
+//        ZStack {
+//            content.onTapGesture {
+//                isActive = true
+//            }
+//            NavigationLink(destination: destination(), isActive: $isActive) {
+//                EmptyView()
+//            }.isDetailLink(false)
+//        }
     }
 }
 
