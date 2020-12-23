@@ -22,7 +22,9 @@ public struct AsIsNavigationLink<Destination: View, Content: View>: View {
     }
     
     public var body: some View {
-        content.background(
+        content.onTapGesture {
+            isActive = true
+        }.background(
             NavigationLink(
                 destination: destination,
                 isActive: $isActive,
