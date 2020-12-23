@@ -9,11 +9,11 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public struct ActionNavigationLink<Destination: View, Content: View>: View {
-    private let destination: Destination
-    private let content: Content
-    private let action: (NavigationToken) -> ()
+    public let destination: Destination
+    public let content: Content
+    public let action: (NavigationToken) -> ()
 
-    @State private var continueToDestination: Bool = false
+    @State public var continueToDestination: Bool = false
 
     public init(
         destination: Destination,
@@ -35,7 +35,7 @@ public struct ActionNavigationLink<Destination: View, Content: View>: View {
             )
     }
 
-    private func buttonAction() {
+    public func buttonAction() {
         let token = NavigationToken {
             self.continueToDestination = true
         }

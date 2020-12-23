@@ -48,14 +48,10 @@ struct ActionPush<Destination: View>: ViewModifier {
 
     var destination: () -> Destination
     var action: (NavigationToken) -> ()
-    @State var isActive: Bool
 
     func body(content: Content) -> some View {
-        ZStack {
+        ActionNavigationLink(destination: destination(), action: action) {
             content
-            ActionNavigationLink(destination: destination(), action: action) {
-                EmptyView()
-            }
         }
     }
 }
