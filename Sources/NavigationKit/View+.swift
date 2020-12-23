@@ -65,4 +65,10 @@ extension View {
             }
         }, onDismiss: onDismiss, isPresented: false))
     }
+    
+    public func pushes<Destination: View>(_ destination: Destination, after action: @escaping (NavigationToken) -> ()) -> some View {
+        modifier(ActionPush(destination: {
+            destination
+        }, action: action, isActive: false))
+    }
 }

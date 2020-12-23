@@ -42,3 +42,20 @@ struct PushAsRoot<Destination: View>: ViewModifier {
         }
     }
 }
+
+@available(iOS 13.0, *)
+struct ActionPush<Destination: View>: ViewModifier {
+
+    var destination: () -> Destination
+    var action: (NavigationToken) -> ()
+    @State var isActive: Bool
+
+    func body(content: Content) -> some View {
+        ZStack {
+            content
+            ActionNavigationLink(destination: destination(), action: action) {
+                EmptyView()
+            }
+        }
+    }
+}
