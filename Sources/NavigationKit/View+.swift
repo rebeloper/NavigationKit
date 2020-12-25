@@ -42,6 +42,10 @@ extension View {
         modifier(Dismiss())
     }
     
+    public func dismissesAsIs() -> some View {
+        modifier(DismissAsIs())
+    }
+    
     public func dismissesToRoot() -> some View {
         modifier(DismissToRoot())
     }

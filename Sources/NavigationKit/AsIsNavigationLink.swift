@@ -14,9 +14,7 @@ public struct AsIsNavigationLink<Destination: View, Content: View>: View {
     
     @State public var isActive: Bool = false
     
-    public init(
-        destination: Destination,
-        @ViewBuilder content: () -> Content) {
+    public init(destination: Destination, @ViewBuilder content: () -> Content) {
         self.destination = destination
         self.content = content()
     }

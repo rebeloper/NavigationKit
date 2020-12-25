@@ -17,6 +17,15 @@ struct Dismiss: ViewModifier {
 }
 
 @available(iOS 13.0, *)
+struct DismissAsIs: ViewModifier {
+    func body(content: Content) -> some View {
+        AsIsDismissLink {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
 struct DismissToRoot: ViewModifier {
     
     @EnvironmentObject var navigation: Navigation
