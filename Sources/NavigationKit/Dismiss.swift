@@ -40,11 +40,12 @@ struct DismissAsIs: ViewModifier {
 @available(iOS 13.0, *)
 struct DismissToRoot: ViewModifier {
     
+    let tag: Int
     @EnvironmentObject var navigation: Navigation
     
     func body(content: Content) -> some View {
         content.onTapGesture {
-            navigation.isPushRootActive = false
+            navigation.tag = tag
         }
     }
 }

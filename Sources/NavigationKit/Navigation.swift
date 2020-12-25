@@ -9,6 +9,7 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 public class Navigation: ObservableObject {
-    @Published public var isPushRootActive: Bool = false
+//    @Published public var tag: Int = 0
+    @State public var tag: Int?
     public init() { }
 }

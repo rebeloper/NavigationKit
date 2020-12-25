@@ -32,8 +32,8 @@ extension View {
         }))
     }
     
-    public func pushesAsRoot<Destination: View>(_ destination: Destination) -> some View {
-        modifier(PushAsRoot(destination: {
+    public func pushesAsRoot<Destination: View>(_ destination: Destination, tag: Int) -> some View {
+        modifier(PushAsRoot(tag: tag, destination: {
             destination
         }))
     }
@@ -50,8 +50,8 @@ extension View {
         modifier(DismissAsIs())
     }
     
-    public func dismissesToRoot() -> some View {
-        modifier(DismissToRoot())
+    public func dismissesToRoot(tag: Int) -> some View {
+        modifier(DismissToRoot(tag: tag))
     }
     
     public func dismissesNavigationViewSheet() -> some View {

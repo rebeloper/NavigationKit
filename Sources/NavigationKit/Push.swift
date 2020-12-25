@@ -47,17 +47,20 @@ struct AsIsPush<Destination: View>: ViewModifier {
 @available(iOS 13.0, *)
 struct PushAsRoot<Destination: View>: ViewModifier {
 
+    let tag: Int
     var destination: () -> Destination
     @EnvironmentObject var navigation: Navigation
 
     func body(content: Content) -> some View {
         ZStack {
             content.onTapGesture {
-                navigation.isPushRootActive = true
+                navigation.tag = tag
             }
-            NavigationLink(destination: destination(), isActive: $navigation.isPushRootActive) {
-                EmptyView()
-            }.isDetailLink(false)
+            NavigationLink(
+                destination: destination(),
+                tag: tag,
+                selection: navigation.$tag,
+                label: {EmptyView()}).isDetailLink(false)
         }
     }
 }
