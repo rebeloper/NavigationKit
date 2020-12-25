@@ -99,7 +99,7 @@ extension View {
             NavigationView {
                 destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
             }
-        }, isPresented: false))
+        }))
     }
     
     public func presentsNavigationView<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true, onDismiss: (() -> Void)?) -> some View {
@@ -107,7 +107,39 @@ extension View {
             NavigationView {
                 destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
             }
-        }, onDismiss: onDismiss, isPresented: false))
+        }, onDismiss: onDismiss))
+    }
+    
+    public func presentsNavigationView<Destination: View>(_ destination: Destination, after action: @escaping (NavigationToken) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
+        modifier(ActionPresentNavigationView(destination: {
+            NavigationView {
+                destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
+            }
+        }, action: action))
+    }
+    
+    public func presentsNavigationView<Destination: View>(_ destination: Destination, onDismiss: (() -> Void)?, after action: @escaping (NavigationToken) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
+        modifier(ActionPresentNavigationViewOnDismiss(destination: {
+            NavigationView {
+                destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
+            }
+        }, onDismiss: onDismiss, action: action))
+    }
+    
+    public func presentsAsIsNavigationView<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {
+        modifier(AsIsPresentNavigationView(destination: {
+            NavigationView {
+                destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
+            }
+        }))
+    }
+    
+    public func presentsAsIsNavigationView<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true, onDismiss: (() -> Void)?) -> some View {
+        modifier(AsIsPresentNavigationViewOnDismiss(destination: {
+            NavigationView {
+                destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
+            }
+        }, onDismiss: onDismiss))
     }
     
 }

@@ -88,14 +88,10 @@ struct AsIsPresentOnDismiss<Destination: View>: ViewModifier {
 struct PresentNavigationView<Destination: View>: ViewModifier {
     
     var destination: () -> Destination
-    @State var isPresented: Bool
     
     func body(content: Content) -> some View {
-        content.onTapGesture {
-            isPresented = true
-        }
-        .sheet(isPresented: $isPresented) {
-            destination().environment(\.showingSheet, $isPresented)
+        ButtonPresentNavigationViewLink(destination: destination()) {
+            content
         }
     }
 }
@@ -105,14 +101,62 @@ struct PresentNavigationViewOnDismiss<Destination: View>: ViewModifier {
     
     var destination: () -> Destination
     var onDismiss: (() -> Void)?
-    @State var isPresented: Bool
     
     func body(content: Content) -> some View {
-        content.onTapGesture {
-            isPresented = true
+        ButtonPresentOnDismissNavigationViewLink(destination: destination(), onDismiss: onDismiss) {
+            content
         }
-        .sheet(isPresented: $isPresented, onDismiss: onDismiss) {
-            destination().environment(\.showingSheet, $isPresented)
+    }
+}
+
+@available(iOS 13.0, *)
+struct ActionPresentNavigationView<Destination: View>: ViewModifier {
+    
+    var destination: () -> Destination
+    var action: (NavigationToken) -> ()
+    
+    func body(content: Content) -> some View {
+        ActionPresentNavigationViewLink(destination: destination(), action: action) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct ActionPresentNavigationViewOnDismiss<Destination: View>: ViewModifier {
+    
+    var destination: () -> Destination
+    var onDismiss: (() -> Void)?
+    var action: (NavigationToken) -> ()
+    
+    func body(content: Content) -> some View {
+        ActionPresentOnDismissNavigationViewLink(destination: destination(), onDismiss: onDismiss, action: action) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct AsIsPresentNavigationView<Destination: View>: ViewModifier {
+    
+    var destination: () -> Destination
+    
+    func body(content: Content) -> some View {
+        AsIsPresentNavigationViewLink(destination: destination()) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct AsIsPresentNavigationViewOnDismiss<Destination: View>: ViewModifier {
+    
+    var destination: () -> Destination
+    var onDismiss: (() -> Void)?
+    
+    func body(content: Content) -> some View {
+        AsIsPresentOnDismissNavigationViewLink(destination: destination(), onDismiss: onDismiss) {
+            content
         }
     }
 }
