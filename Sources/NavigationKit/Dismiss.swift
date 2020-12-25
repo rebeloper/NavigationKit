@@ -9,12 +9,9 @@ import SwiftUI
 
 @available(iOS 13.0, *)
 struct Dismiss: ViewModifier {
-    
-    @Environment(\.presentationMode) var presentationMode
-    
     func body(content: Content) -> some View {
-        content.onTapGesture {
-            presentationMode.wrappedValue.dismiss()
+        ButtonDismissLink {
+            content
         }
     }
 }
