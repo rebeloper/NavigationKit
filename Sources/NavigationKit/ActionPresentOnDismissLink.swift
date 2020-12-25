@@ -1,22 +1,24 @@
 //
-//  ActionNavigationLink.swift
+//  ActionPresentOnDismissLink.swift
 //  
 //
-//  Created by Alex Nagy on 23.12.2020.
+//  Created by Alex Nagy on 25.12.2020.
 //
 
 import SwiftUI
 
 @available(iOS 13.0, *)
-public struct ActionNavigationLink<Destination: View, Content: View>: View {
+public struct ActionPresentOnDismissLink<Destination: View, Content: View>: View {
     public let destination: Destination
+    public let onDismiss: (() -> Void)?
     public let content: Content
     public let action: (NavigationToken) -> ()
 
     @State public var isActive: Bool = false
 
-    public init(destination: Destination, action: @escaping (NavigationToken) -> (), @ViewBuilder content: () -> Content) {
+    public init(destination: Destination, onDismiss: (() -> Void)?, action: @escaping (NavigationToken) -> (), @ViewBuilder content: () -> Content) {
         self.destination = destination
+        self.onDismiss = onDismiss
         self.action = action
         self.content = content()
     }
@@ -25,13 +27,9 @@ public struct ActionNavigationLink<Destination: View, Content: View>: View {
         Button(action: buttonAction, label: {
                 content
         })
-        .background(
-            NavigationLink(
-                destination: destination,
-                isActive: $isActive,
-                label: { EmptyView() }
-            ).isDetailLink(false)
-        )
+        .sheet(isPresented: $isActive, onDismiss: onDismiss, content: {
+            destination
+        })
     }
 
     public func buttonAction() {
@@ -42,4 +40,5 @@ public struct ActionNavigationLink<Destination: View, Content: View>: View {
         action(token)
     }
 }
+
 

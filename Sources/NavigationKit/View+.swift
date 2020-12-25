@@ -61,13 +61,37 @@ extension View {
     public func presents<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(Present(destination: {
             destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
-        }, isPresented: false))
+        }))
     }
     
     public func presents<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true, onDismiss: (() -> Void)?) -> some View {
         modifier(PresentOnDismiss(destination: {
             destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
-        }, onDismiss: onDismiss, isPresented: false))
+        }, onDismiss: onDismiss))
+    }
+    
+    public func presents<Destination: View>(_ destination: Destination, after action: @escaping (NavigationToken) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
+        modifier(ActionPresent(destination: {
+            destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
+        }, action: action))
+    }
+    
+    public func presents<Destination: View>(_ destination: Destination, onDismiss: (() -> Void)?, after action: @escaping (NavigationToken) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
+        modifier(ActionPresentOnDismiss(destination: {
+            destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
+        }, onDismiss: onDismiss, action: action))
+    }
+    
+    public func presentsAsIs<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {
+        modifier(AsIsPresent(destination: {
+            destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
+        }))
+    }
+    
+    public func presentsAsIs<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true, onDismiss: (() -> Void)?) -> some View {
+        modifier(AsIsPresentOnDismiss(destination: {
+            destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
+        }, onDismiss: onDismiss))
     }
     
     public func presentsNavigationView<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {

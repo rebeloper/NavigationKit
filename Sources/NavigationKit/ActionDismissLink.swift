@@ -21,7 +21,7 @@ public struct ActionDismissLink<Content: View>: View {
 
     public var body: some View {
         Button(action: buttonAction, label: {
-                content
+            content
         })
     }
     

@@ -11,7 +11,6 @@ import SwiftUI
 struct Push<Destination: View>: ViewModifier {
 
     var destination: () -> Destination
-    @State var isActive: Bool = false
 
     func body(content: Content) -> some View {
         ButtonNavigationLink(destination: destination()) {
@@ -37,7 +36,6 @@ struct ActionPush<Destination: View>: ViewModifier {
 struct AsIsPush<Destination: View>: ViewModifier {
 
     var destination: () -> Destination
-    @State var isActive: Bool = false
 
     func body(content: Content) -> some View {
         AsIsNavigationLink(destination: destination()) {

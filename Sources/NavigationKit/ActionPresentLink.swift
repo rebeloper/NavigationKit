@@ -1,14 +1,14 @@
 //
-//  ActionNavigationLink.swift
+//  ActionPresentLink.swift
 //  
 //
-//  Created by Alex Nagy on 23.12.2020.
+//  Created by Alex Nagy on 25.12.2020.
 //
 
 import SwiftUI
 
 @available(iOS 13.0, *)
-public struct ActionNavigationLink<Destination: View, Content: View>: View {
+public struct ActionPresentLink<Destination: View, Content: View>: View {
     public let destination: Destination
     public let content: Content
     public let action: (NavigationToken) -> ()
@@ -25,13 +25,9 @@ public struct ActionNavigationLink<Destination: View, Content: View>: View {
         Button(action: buttonAction, label: {
                 content
         })
-        .background(
-            NavigationLink(
-                destination: destination,
-                isActive: $isActive,
-                label: { EmptyView() }
-            ).isDetailLink(false)
-        )
+        .sheet(isPresented: $isActive, content: {
+            destination
+        })
     }
 
     public func buttonAction() {
