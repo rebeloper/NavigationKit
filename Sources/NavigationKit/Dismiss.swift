@@ -26,6 +26,18 @@ struct DismissAsIs: ViewModifier {
 }
 
 @available(iOS 13.0, *)
+struct ActionDismiss: ViewModifier {
+    
+    var action: (NavigationToken) -> ()
+
+    func body(content: Content) -> some View {
+        ActionDismissLink(action: action) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
 struct DismissToRoot: ViewModifier {
     
     @EnvironmentObject var navigation: Navigation

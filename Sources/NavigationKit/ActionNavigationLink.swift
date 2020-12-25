@@ -15,10 +15,7 @@ public struct ActionNavigationLink<Destination: View, Content: View>: View {
 
     @State public var isActive: Bool = false
 
-    public init(
-        destination: Destination,
-        action: @escaping (NavigationToken) -> (),
-        @ViewBuilder content: () -> Content) {
+    public init(destination: Destination, action: @escaping (NavigationToken) -> (), @ViewBuilder content: () -> Content) {
         self.destination = destination
         self.action = action
         self.content = content()

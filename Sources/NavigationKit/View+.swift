@@ -42,6 +42,10 @@ extension View {
         modifier(Dismiss())
     }
     
+    public func dismisses(after action: @escaping (NavigationToken) -> ()) -> some View {
+        modifier(ActionDismiss(action: action))
+    }
+    
     public func dismissesAsIs() -> some View {
         modifier(DismissAsIs())
     }
