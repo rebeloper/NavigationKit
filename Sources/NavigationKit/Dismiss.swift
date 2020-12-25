@@ -17,21 +17,21 @@ struct Dismiss: ViewModifier {
 }
 
 @available(iOS 13.0, *)
-struct DismissAsIs: ViewModifier {
-    func body(content: Content) -> some View {
-        AsIsDismissLink {
-            content
-        }
-    }
-}
-
-@available(iOS 13.0, *)
 struct ActionDismiss: ViewModifier {
     
     var action: (NavigationToken) -> ()
 
     func body(content: Content) -> some View {
         ActionDismissLink(action: action) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct DismissAsIs: ViewModifier {
+    func body(content: Content) -> some View {
+        AsIsDismissLink {
             content
         }
     }
@@ -51,12 +51,30 @@ struct DismissToRoot: ViewModifier {
 
 @available(iOS 13.0, *)
 struct DismissNavigationViewSheet: ViewModifier {
+    func body(content: Content) -> some View {
+        ButtonDismissNavigationViewLink {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct ActionDismissNavigationViewSheet: ViewModifier {
     
-    @Environment(\.showingSheet) var showingSheet
+    var action: (NavigationToken) -> ()
     
     func body(content: Content) -> some View {
-        content.onTapGesture {
-            showingSheet?.wrappedValue = false
+        ActionDismissNavigationViewLink(action: action) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct AsIsDismissNavigationViewSheet: ViewModifier {
+    func body(content: Content) -> some View {
+        AsIsDismissNavigationViewLink {
+            content
         }
     }
 }

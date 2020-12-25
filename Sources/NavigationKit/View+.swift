@@ -58,6 +58,14 @@ extension View {
         return modifier(DismissNavigationViewSheet())
     }
     
+    public func dismissesNavigationViewSheet(after action: @escaping (NavigationToken) -> ()) -> some View {
+        modifier(ActionDismissNavigationViewSheet(action: action))
+    }
+    
+    public func dismissesAsIsNavigationViewSheet() -> some View {
+        modifier(AsIsDismissNavigationViewSheet())
+    }
+    
     public func presents<Destination: View>(_ destination: Destination, allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(Present(destination: {
             destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
