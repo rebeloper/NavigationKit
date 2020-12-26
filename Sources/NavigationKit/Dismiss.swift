@@ -29,7 +29,7 @@ struct ActionDismiss: ViewModifier {
 }
 
 @available(iOS 13.0, *)
-struct DismissAsIs: ViewModifier {
+struct AsIsDismiss: ViewModifier {
     func body(content: Content) -> some View {
         AsIsDismissLink {
             content

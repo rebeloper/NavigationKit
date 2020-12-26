@@ -37,7 +37,7 @@ extension View {
     }
     
     public func dismissesAsIs() -> some View {
-        modifier(DismissAsIs())
+        modifier(AsIsDismiss())
     }
     
     public func dismissesNavigationViewSheet() -> some View {
