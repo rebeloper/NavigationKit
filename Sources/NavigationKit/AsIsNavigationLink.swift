@@ -27,7 +27,7 @@ public struct AsIsNavigationLink<Destination: View, Content: View>: View {
                 destination: destination,
                 isActive: $isActive,
                 label: { EmptyView() }
-            ).isDetailLink(false)
+            ).isDetailLink(false).hidden()
         )
     }
 }

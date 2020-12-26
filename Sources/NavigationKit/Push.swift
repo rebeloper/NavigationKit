@@ -48,20 +48,12 @@ struct AsIsPush<Destination: View>: ViewModifier {
 struct PushAsRoot<Destination: View>: ViewModifier {
 
     let tag: Int
-    let selection: Binding<Int?>
+    var selection: Binding<Int?>
     var destination: () -> Destination
-    @EnvironmentObject var navigation: Navigation
 
     func body(content: Content) -> some View {
-        ZStack {
-            content.onTapGesture {
-                navigation.tag = tag
-            }
-            NavigationLink(
-                destination: destination(),
-                tag: tag,
-                selection: selection,
-                label: {EmptyView()}).isDetailLink(false)
-        }
+        ButtonAsRootNavigationLink(destination: destination(), content: {
+            content
+        }, tag: tag, selection: selection)
     }
 }
