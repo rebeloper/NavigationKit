@@ -19,7 +19,7 @@ public struct AsIsDismissNavigationViewLink<Content: View>: View {
 
     public var body: some View {
         content.onTapGesture {
-            showingSheet?.wrappedValue = false
+            showingSheet?.wrappedValue.dismiss()
         }
     }
 }

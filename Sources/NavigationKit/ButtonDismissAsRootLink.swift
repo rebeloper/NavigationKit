@@ -20,7 +20,6 @@ public struct ButtonDismissToRootLink<Content: View>: View {
     public var body: some View {
         Button(action: {
             pushingInRoot?.wrappedValue.toggle()
-            print("pushingInRoot: \(pushingInRoot?.wrappedValue)")
         }, label: {
             content
         })

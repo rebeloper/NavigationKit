@@ -27,7 +27,7 @@ public struct ActionDismissNavigationViewLink<Content: View>: View {
     
     public func buttonAction() {
         let token = NavigationToken {
-            showingSheet?.wrappedValue = false
+            showingSheet?.wrappedValue.dismiss()
         }
 
         action(token)

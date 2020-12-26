@@ -19,7 +19,7 @@ public struct ButtonDismissNavigationViewLink<Content: View>: View {
 
     public var body: some View {
         Button(action: {
-            showingSheet?.wrappedValue = false
+            showingSheet?.wrappedValue.dismiss()
         }, label: {
             content
         })
