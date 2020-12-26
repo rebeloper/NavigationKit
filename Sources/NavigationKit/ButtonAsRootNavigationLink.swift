@@ -13,7 +13,6 @@ public struct ButtonAsRootNavigationLink<Destination: View, Content: View>: View
     public let content: Content
 
     public var isActive: Binding<Bool>
-    @Environment(\.pushingInRoot) var pushingInRoot
 
     public init(destination: Destination, @ViewBuilder content: () -> Content, isActive: Binding<Bool>) {
         self.destination = destination
@@ -31,6 +30,6 @@ public struct ButtonAsRootNavigationLink<Destination: View, Content: View>: View
                     isActive: isActive,
                     label: { EmptyView() }
                 ).isDetailLink(false).hidden()
-            ).environment(\.pushingInRoot, isActive)
+            )
     }
 }
