@@ -21,7 +21,7 @@ extension EnvironmentValues {
 }
 
 @available(iOS 13.0, *)
-struct RootNavigationKey: EnvironmentKey {
+public struct RootNavigationKey: EnvironmentKey {
     public static let defaultValue: Binding<Bool>? = nil
 }
 
