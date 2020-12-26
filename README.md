@@ -324,7 +324,7 @@ struct Tab_1_0_View: View {
 Here's how you can dismiss the modal:
 
 1. grab the `presentationMode` environment
-2. dimiss it's the `wrappedValue`
+2. dimiss it with it's `wrappedValue`
 
 ```
 struct Tab_1_1_View: View {
