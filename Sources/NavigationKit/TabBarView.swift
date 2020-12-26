@@ -17,11 +17,12 @@ public struct TabBarView<RootView: View, TabItemView: View>: View {
     @Environment(\.pushingInRoot) public var pushingInRoot
     @Binding public var isActive: Bool
     
-//    public init(rootView: @escaping () -> RootView, tabItemView: @escaping () -> TabItemView, tabTag: Int) {
-//        self.rootView = rootView
-//        self.tabItemView = tabItemView
-//        self.tabTag = tabTag
-//    }
+    public init(rootView: @escaping () -> RootView, tabItemView: @escaping () -> TabItemView, tabTag: Int, isActive: Binding<Bool>) {
+        self.rootView = rootView
+        self.tabItemView = tabItemView
+        self.tabTag = tabTag
+        self._isActive = isActive
+    }
     
     public var body: some View {
         NavigationView {
