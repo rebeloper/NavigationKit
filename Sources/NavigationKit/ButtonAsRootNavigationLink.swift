@@ -23,7 +23,6 @@ public struct ButtonAsRootNavigationLink<Destination: View, Content: View>: View
     public var body: some View {
         Button(action: {
             isActive = true
-            pushingInRoot?.wrappedValue = true
         }, label: { content })
             .background(
                 NavigationLink(
