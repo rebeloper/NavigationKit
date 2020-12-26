@@ -9,7 +9,11 @@ import SwiftUI
 
 public struct Screen<Content>: View where Content: View {
     
-    public let content: () -> Content
+    public var content: () -> Content
+    
+    public init(content: @escaping () -> Content) {
+        self.content = content
+    }
 
     public var body: some View {
         ZStack {
