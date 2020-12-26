@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Bool {
-    mutating func dismiss() {
-        self.toggle()
+    mutating func present() {
+        self = true
     }
 }
