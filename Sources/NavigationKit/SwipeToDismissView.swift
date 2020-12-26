@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct SwipeToDismissView: UIViewControllerRepresentable {
     var dismissable: () -> Bool = { false }
     
@@ -20,7 +19,6 @@ struct SwipeToDismissView: UIViewControllerRepresentable {
     }
 }
 
-@available(iOS 13.0, *)
 extension SwipeToDismissView {
     private final class SwipeToDismissViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
         let dismissable: () -> Bool
@@ -61,7 +59,6 @@ extension UIViewController {
     }
 }
 
-@available(iOS 13.0, *)
 extension View {
     public func disableSwipeToDismiss() -> some View {
         self.background(SwipeToDismissView(dismissable: { false }))

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 public struct FullScreenSheet<Content>: View where Content: View {
     
     @Binding public var isPresented: Bool

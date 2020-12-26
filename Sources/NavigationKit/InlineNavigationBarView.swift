@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 public struct InlineNavigationBarView<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View, Content: View>: View {
     public let titleView: TitleView
     public let leadingView: LeadingView
@@ -42,7 +41,6 @@ public struct InlineNavigationBarView<TitleView: View, LeadingView: View, Traili
     }
 }
 
-@available(iOS 13.0, *)
 struct InlineNavigationBarViewModifier<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View>: ViewModifier {
     
     var titleView: () -> TitleView
@@ -55,7 +53,6 @@ struct InlineNavigationBarViewModifier<TitleView: View, LeadingView: View, Trail
     }
 }
 
-@available(iOS 13.0, *)
 struct LargeNavigationBarViewModifier<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View>: ViewModifier {
     
     var titleView: () -> TitleView
