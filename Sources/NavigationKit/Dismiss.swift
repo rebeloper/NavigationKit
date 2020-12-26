@@ -41,11 +41,10 @@ struct DismissAsIs: ViewModifier {
 struct DismissToRoot: ViewModifier {
     
     let tag: Int
-    @EnvironmentObject var navigation: Navigation
     
     func body(content: Content) -> some View {
         content.onTapGesture {
-            navigation.tag = tag
+            
         }
     }
 }

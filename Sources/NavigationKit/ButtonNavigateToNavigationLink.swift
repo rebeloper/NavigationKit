@@ -12,8 +12,6 @@ public struct ButtonNavigateToNavigationLink<Destination: View, Content: View>: 
     public let destination: Destination
     public let content: Content
     public let tag: Int
-    
-    @Environment(\.navigationPresentationMode) var navigationPresentationMode: Binding<NavigationPresentationMode>
 
     public init(destination: Destination, @ViewBuilder content: () -> Content, tag: Int) {
         self.destination = destination
@@ -23,17 +21,17 @@ public struct ButtonNavigateToNavigationLink<Destination: View, Content: View>: 
 
     public var body: some View {
         Button(action: {
-            navigationPresentationMode.wrappedValue = tag
+//            navigationPresentationMode.wrappedValue = tag
         }, label: {
             content
         })
-        .background(
-            NavigationLink(
-                destination: destination,
-                tag: tag,
-                selection: navigationPresentationMode,
-                label: {EmptyView()}
-            ).isDetailLink(false).hidden()
-        )
+//        .background(
+//            NavigationLink(
+//                destination: destination,
+//                tag: tag,
+//                selection: navigationPresentationMode,
+//                label: {EmptyView()}
+//            ).isDetailLink(false).hidden()
+//        )
     }
 }

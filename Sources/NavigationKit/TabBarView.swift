@@ -12,13 +12,11 @@ public struct TabBarView<RootView: View, TabItemView: View>: View {
     
     public var rootView: () -> RootView
     public var tabItemView: () -> TabItemView
-    public var navigation: Navigation
     public var tabTag: Int
     
-    public init(rootView: @escaping () -> RootView, tabItemView: @escaping () -> TabItemView, navigation: Navigation = Navigation(), tabTag: Int) {
+    public init(rootView: @escaping () -> RootView, tabItemView: @escaping () -> TabItemView, tabTag: Int) {
         self.rootView = rootView
         self.tabItemView = tabItemView
-        self.navigation = navigation
         self.tabTag = tabTag
     }
     
@@ -28,6 +26,6 @@ public struct TabBarView<RootView: View, TabItemView: View>: View {
         }
         .tabItem {
             tabItemView()
-        }.tag(tabTag).rootable(navigation)
+        }.tag(tabTag)
     }
 }
