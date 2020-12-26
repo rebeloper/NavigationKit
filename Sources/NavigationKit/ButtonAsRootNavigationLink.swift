@@ -10,24 +10,24 @@ import SwiftUI
 @available(iOS 13.0, *)
 public struct ButtonAsRootNavigationLink<Destination: View, Content: View>: View {
     public let destination: Destination
-    public let content: Content
+    public let content: () -> Content
 
-    public var isActive: Binding<Bool>
+    @Binding public var isActive: Bool
 
-    public init(destination: Destination, @ViewBuilder content: () -> Content, isActive: Binding<Bool>) {
-        self.destination = destination
-        self.content = content()
-        self.isActive = isActive
-    }
+//    public init(destination: Destination, @ViewBuilder content: () -> Content, isActive: Binding<Bool>) {
+//        self.destination = destination
+//        self.content = content()
+//        self.isActive = isActive
+//    }
 
     public var body: some View {
         Button(action: {
-            isActive.wrappedValue = true
-        }, label: { content })
+            isActive = true
+        }, label: { content() })
             .background(
                 NavigationLink(
                     destination: destination,
-                    isActive: isActive,
+                    isActive: $isActive,
                     label: { EmptyView() }
                 ).isDetailLink(false).hidden()
             )
