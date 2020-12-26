@@ -28,12 +28,6 @@ extension View {
         }))
     }
     
-    public func navigatesTo<Destination: View>(_ destination: Destination, tag: Int) -> some View {
-        modifier(NavigateTo(tag: tag, destination: {
-            destination
-        }))
-    }
-    
     public func dismisses() -> some View {
         modifier(Dismiss())
     }
@@ -44,10 +38,6 @@ extension View {
     
     public func dismissesAsIs() -> some View {
         modifier(DismissAsIs())
-    }
-    
-    public func dismissesToRoot(tag: Int) -> some View {
-        modifier(DismissToRoot(tag: tag))
     }
     
     public func dismissesNavigationViewSheet() -> some View {

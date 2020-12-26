@@ -43,16 +43,3 @@ struct AsIsPush<Destination: View>: ViewModifier {
         }
     }
 }
-
-@available(iOS 13.0, *)
-struct NavigateTo<Destination: View>: ViewModifier {
-
-    let tag: Int
-    var destination: () -> Destination
-
-    func body(content: Content) -> some View {
-        ButtonNavigateToNavigationLink(destination: destination(), content: {
-            content
-        }, tag: tag)
-    }
-}

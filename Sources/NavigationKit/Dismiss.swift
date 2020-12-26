@@ -38,18 +38,6 @@ struct DismissAsIs: ViewModifier {
 }
 
 @available(iOS 13.0, *)
-struct DismissToRoot: ViewModifier {
-    
-    let tag: Int
-    
-    func body(content: Content) -> some View {
-        content.onTapGesture {
-            
-        }
-    }
-}
-
-@available(iOS 13.0, *)
 struct DismissNavigationViewSheet: ViewModifier {
     func body(content: Content) -> some View {
         ButtonDismissNavigationViewLink {
