@@ -11,7 +11,7 @@ import SwiftUI
 public struct ButtonDismissToRootLink<Content: View>: View {
     public let content: Content
 
-    @Environment(\.pushingInRoot) var pushingInRoot
+    @Environment(\.rootNavigation) var rootNavigation
 
     public init(@ViewBuilder content: () -> Content) {
         self.content = content()
@@ -19,7 +19,7 @@ public struct ButtonDismissToRootLink<Content: View>: View {
 
     public var body: some View {
         Button(action: {
-            pushingInRoot?.wrappedValue.toggle()
+            rootNavigation?.wrappedValue.toggle()
         }, label: {
             content
         })
