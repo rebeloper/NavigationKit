@@ -38,6 +38,15 @@ struct AsIsDismiss: ViewModifier {
 }
 
 @available(iOS 13.0, *)
+struct ToRootDismiss: ViewModifier {
+    func body(content: Content) -> some View {
+        ButtonDismissToRootLink {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
 struct DismissNavigationViewSheet: ViewModifier {
     func body(content: Content) -> some View {
         ButtonDismissNavigationViewLink {

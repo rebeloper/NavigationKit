@@ -28,6 +28,12 @@ extension View {
         }))
     }
     
+    public func pushesAsRoot<Destination: View>(_ destination: Destination) -> some View {
+        modifier(AsRootPush(destination: {
+            destination
+        }))
+    }
+    
     public func dismisses() -> some View {
         modifier(Dismiss())
     }
@@ -38,6 +44,10 @@ extension View {
     
     public func dismissesAsIs() -> some View {
         modifier(AsIsDismiss())
+    }
+    
+    public func dismissesToRoot() -> some View {
+        modifier(ToRootDismiss())
     }
     
     public func dismissesNavigationViewSheet() -> some View {

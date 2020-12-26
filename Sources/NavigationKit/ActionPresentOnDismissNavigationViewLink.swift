@@ -25,7 +25,7 @@ public struct ActionPresentOnDismissNavigationViewLink<Destination: View, Conten
 
     public var body: some View {
         Button(action: buttonAction, label: {
-                content
+            content
         })
         .sheet(isPresented: $isActive, onDismiss: onDismiss, content: {
             destination.environment(\.showingSheet, $isActive)

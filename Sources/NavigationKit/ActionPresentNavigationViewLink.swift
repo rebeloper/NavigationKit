@@ -23,7 +23,7 @@ public struct ActionPresentNavigationViewLink<Destination: View, Content: View>:
 
     public var body: some View {
         Button(action: buttonAction, label: {
-                content
+            content
         })
         .sheet(isPresented: $isActive, content: {
             destination.environment(\.showingSheet, $isActive)

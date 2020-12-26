@@ -43,3 +43,15 @@ struct AsIsPush<Destination: View>: ViewModifier {
         }
     }
 }
+
+@available(iOS 13.0, *)
+struct AsRootPush<Destination: View>: ViewModifier {
+
+    var destination: () -> Destination
+
+    func body(content: Content) -> some View {
+        ButtonAsRootNavigationLink(destination: destination()) {
+            content
+        }
+    }
+}
