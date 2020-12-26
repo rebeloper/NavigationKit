@@ -48,6 +48,7 @@ struct AsIsPush<Destination: View>: ViewModifier {
 struct PushAsRoot<Destination: View>: ViewModifier {
 
     let tag: Int
+    let selection: Binding<Int?>
     var destination: () -> Destination
     @EnvironmentObject var navigation: Navigation
 
@@ -59,7 +60,7 @@ struct PushAsRoot<Destination: View>: ViewModifier {
             NavigationLink(
                 destination: destination(),
                 tag: tag,
-                selection: navigation.$tag,
+                selection: selection,
                 label: {EmptyView()}).isDetailLink(false)
         }
     }

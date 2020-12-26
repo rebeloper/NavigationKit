@@ -32,8 +32,8 @@ extension View {
         }))
     }
     
-    public func pushesAsRoot<Destination: View>(_ destination: Destination, tag: Int) -> some View {
-        modifier(PushAsRoot(tag: tag, destination: {
+    public func pushesAsRoot<Destination: View>(_ destination: Destination, tag: Int, selection: Binding<Int?>) -> some View {
+        modifier(PushAsRoot(tag: tag, selection: selection, destination: {
             destination
         }))
     }
