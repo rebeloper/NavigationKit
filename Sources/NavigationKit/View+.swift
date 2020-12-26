@@ -34,6 +34,18 @@ extension View {
         }, isActive: isActive))
     }
     
+    public func pushesAsRoot<Destination: View>(_ destination: Destination, after action: @escaping (Navigation) -> (), isActive: Binding<Bool>) -> some View {
+        modifier(ActionAsRootPush(destination: {
+            destination
+        }, action: action, isActive: isActive))
+    }
+    
+    public func pushesAsIsAsRoot<Destination: View>(_ destination: Destination, isActive: Binding<Bool>) -> some View {
+        modifier(AsIsAsRootPush(destination: {
+            destination
+        }, isActive: isActive))
+    }
+    
     public func dismisses() -> some View {
         modifier(Dismiss())
     }
@@ -48,6 +60,14 @@ extension View {
     
     public func dismissesToRoot() -> some View {
         modifier(ToRootDismiss())
+    }
+    
+    public func dismissesToRoot(after action: @escaping (Navigation) -> ()) -> some View {
+        modifier(ActionToRootDismiss(action: action))
+    }
+    
+    public func dismissesAsIsToRoot() -> some View {
+        modifier(AsIsToRootDismiss())
     }
     
     public func dismissesNavigationViewSheet() -> some View {

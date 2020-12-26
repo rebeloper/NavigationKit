@@ -56,3 +56,28 @@ struct AsRootPush<Destination: View>: ViewModifier {
         }, isActive: $isActive)
     }
 }
+
+@available(iOS 13.0, *)
+struct ActionAsRootPush<Destination: View>: ViewModifier {
+
+    var destination: () -> Destination
+    var action: (Navigation) -> ()
+    @Binding public var isActive: Bool
+
+    func body(content: Content) -> some View {
+        ActionAsRootNavigationLink(destination: destination(), content: {
+            content
+        }, action: action, isActive: $isActive)
+    }
+}
+
+@available(iOS 13.0, *)
+struct AsIsAsRootPush<Destination: View>: ViewModifier {
+
+    var destination: () -> Destination
+    @Binding public var isActive: Bool
+
+    func body(content: Content) -> some View {
+        AsIsAsRootNavigationLink(destination: destination(), content: content, isActive: $isActive)
+    }
+}

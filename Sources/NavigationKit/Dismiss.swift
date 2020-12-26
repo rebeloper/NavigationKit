@@ -47,6 +47,27 @@ struct ToRootDismiss: ViewModifier {
 }
 
 @available(iOS 13.0, *)
+struct ActionToRootDismiss: ViewModifier {
+    
+    var action: (Navigation) -> ()
+
+    func body(content: Content) -> some View {
+        ActionDismissToRootLink(action: action) {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
+struct AsIsToRootDismiss: ViewModifier {
+    func body(content: Content) -> some View {
+        AsIsDismissToRootLink {
+            content
+        }
+    }
+}
+
+@available(iOS 13.0, *)
 struct DismissNavigationViewSheet: ViewModifier {
     func body(content: Content) -> some View {
         ButtonDismissNavigationViewLink {
