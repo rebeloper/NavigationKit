@@ -1,5 +1,5 @@
 //
-//  ButtonAsRootNavigationLink.swift
+//  ButtonNavigateToNavigationLink.swift
 //  
 //
 //  Created by Alex Nagy on 26.12.2020.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-public struct ButtonAsRootNavigationLink<Destination: View, Content: View>: View {
+public struct ButtonNavigateToNavigationLink<Destination: View, Content: View>: View {
     public let destination: Destination
     public let content: Content
     public let tag: Int
