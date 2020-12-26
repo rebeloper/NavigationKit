@@ -26,10 +26,10 @@ public struct ButtonAsRootNavigationLink<Destination: View, Content: View>: View
         }, label: { content })
             .background(
                 NavigationLink(
-                    destination: destination.environment(\.pushingInRoot, $isActive),
+                    destination: destination,
                     isActive: $isActive,
                     label: { EmptyView() }
                 ).isDetailLink(false).hidden()
-            )
+            ).environment(\.pushingInRoot, $isActive)
     }
 }
