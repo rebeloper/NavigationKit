@@ -14,8 +14,8 @@ public struct TabBarView<RootView: View, TabItemView: View>: View {
     public var tabItemView: () -> TabItemView
     public var tabTag: Int
     
-    @Environment(\.pushingInRoot) var pushingInRoot
-    @Binding var isActive: Bool
+    @Environment(\.pushingInRoot) public var pushingInRoot
+    @Binding public var isActive: Bool
     
 //    public init(rootView: @escaping () -> RootView, tabItemView: @escaping () -> TabItemView, tabTag: Int) {
 //        self.rootView = rootView
