@@ -16,10 +16,10 @@ extension View {
         }))
     }
     
-    public func pushes<Destination: View>(_ destination: Destination, after action: @escaping (NavigationToken) -> ()) -> some View {
+    public func pushes<Destination: View>(_ destination: Destination, after: @escaping (NavigationToken) -> ()) -> some View {
         modifier(ActionPush(destination: {
             destination
-        }, action: action))
+        }, action: after))
     }
     
     public func pushesAsIs<Destination: View>(_ destination: Destination) -> some View {
