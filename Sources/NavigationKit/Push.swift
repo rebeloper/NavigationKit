@@ -48,10 +48,11 @@ struct AsIsPush<Destination: View>: ViewModifier {
 struct AsRootPush<Destination: View>: ViewModifier {
 
     var destination: () -> Destination
-
+    @Binding public var isActive: Bool
+    
     func body(content: Content) -> some View {
-        ButtonAsRootNavigationLink(destination: destination()) {
+        ButtonAsRootNavigationLink(destination: destination(), content: {
             content
-        }
+        }, isActive: $isActive)
     }
 }

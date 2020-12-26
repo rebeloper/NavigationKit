@@ -28,10 +28,10 @@ extension View {
         }))
     }
     
-    public func pushesAsRoot<Destination: View>(_ destination: Destination) -> some View {
+    public func pushesAsRoot<Destination: View>(_ destination: Destination, isActive: Binding<Bool>) -> some View {
         modifier(AsRootPush(destination: {
             destination
-        }))
+        }, isActive: isActive))
     }
     
     public func dismisses() -> some View {
