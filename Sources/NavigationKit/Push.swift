@@ -48,12 +48,11 @@ struct AsIsPush<Destination: View>: ViewModifier {
 struct NavigateTo<Destination: View>: ViewModifier {
 
     let tag: Int
-    var selection: Binding<Int?>
     var destination: () -> Destination
 
     func body(content: Content) -> some View {
         ButtonNavigateToNavigationLink(destination: destination(), content: {
             content
-        }, tag: tag, selection: selection)
+        }, tag: tag)
     }
 }

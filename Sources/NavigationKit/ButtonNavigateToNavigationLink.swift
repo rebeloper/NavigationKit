@@ -12,18 +12,18 @@ public struct ButtonNavigateToNavigationLink<Destination: View, Content: View>: 
     public let destination: Destination
     public let content: Content
     public let tag: Int
-    public var selection: Binding<Int?>
+    
+    @Environment(\.navigationPresentationMode) var navigationPresentationMode: Binding<NavigationPresentationMode>
 
-    public init(destination: Destination, @ViewBuilder content: () -> Content, tag: Int, selection: Binding<Int?>) {
+    public init(destination: Destination, @ViewBuilder content: () -> Content, tag: Int) {
         self.destination = destination
         self.content = content()
         self.tag = tag
-        self.selection = selection
     }
 
     public var body: some View {
         Button(action: {
-            selection.wrappedValue = tag
+            navigationPresentationMode.wrappedValue = tag
         }, label: {
             content
         })
@@ -31,7 +31,7 @@ public struct ButtonNavigateToNavigationLink<Destination: View, Content: View>: 
             NavigationLink(
                 destination: destination,
                 tag: tag,
-                selection: selection,
+                selection: navigationPresentationMode,
                 label: {EmptyView()}
             ).isDetailLink(false).hidden()
         )

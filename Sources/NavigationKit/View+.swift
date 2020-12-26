@@ -32,8 +32,8 @@ extension View {
         }))
     }
     
-    public func navigatesTo<Destination: View>(_ destination: Destination, tag: Int, selection: Binding<Int?>) -> some View {
-        modifier(NavigateTo(tag: tag, selection: selection, destination: {
+    public func navigatesTo<Destination: View>(_ destination: Destination, tag: Int) -> some View {
+        modifier(NavigateTo(tag: tag, destination: {
             destination
         }))
     }
