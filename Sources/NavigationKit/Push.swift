@@ -23,7 +23,7 @@ struct Push<Destination: View>: ViewModifier {
 struct ActionPush<Destination: View>: ViewModifier {
 
     var destination: () -> Destination
-    var action: (NavigationToken) -> ()
+    var action: (Navigation) -> ()
 
     func body(content: Content) -> some View {
         ActionNavigationLink(destination: destination(), action: action) {

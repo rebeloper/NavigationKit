@@ -11,11 +11,11 @@ import SwiftUI
 public struct ActionNavigationLink<Destination: View, Content: View>: View {
     public let destination: Destination
     public let content: Content
-    public let action: (NavigationToken) -> ()
+    public let action: (Navigation) -> ()
 
     @State public var isActive: Bool = false
 
-    public init(destination: Destination, action: @escaping (NavigationToken) -> (), @ViewBuilder content: () -> Content) {
+    public init(destination: Destination, action: @escaping (Navigation) -> (), @ViewBuilder content: () -> Content) {
         self.destination = destination
         self.action = action
         self.content = content()
@@ -35,11 +35,10 @@ public struct ActionNavigationLink<Destination: View, Content: View>: View {
     }
 
     public func buttonAction() {
-        let token = NavigationToken {
+        let navigation = Navigation {
             self.isActive = true
         }
-
-        action(token)
+        action(navigation)
     }
 }
 

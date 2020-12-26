@@ -16,10 +16,10 @@ extension View {
         }))
     }
     
-    public func pushes<Destination: View>(_ destination: Destination, after: @escaping (NavigationToken) -> ()) -> some View {
+    public func pushes<Destination: View>(_ destination: Destination, after action: @escaping (Navigation) -> ()) -> some View {
         modifier(ActionPush(destination: {
             destination
-        }, action: after))
+        }, action: action))
     }
     
     public func pushesAsIs<Destination: View>(_ destination: Destination) -> some View {
@@ -38,7 +38,7 @@ extension View {
         modifier(Dismiss())
     }
     
-    public func dismisses(after action: @escaping (NavigationToken) -> ()) -> some View {
+    public func dismisses(after action: @escaping (Navigation) -> ()) -> some View {
         modifier(ActionDismiss(action: action))
     }
     
@@ -54,7 +54,7 @@ extension View {
         return modifier(DismissNavigationViewSheet())
     }
     
-    public func dismissesNavigationViewSheet(after action: @escaping (NavigationToken) -> ()) -> some View {
+    public func dismissesNavigationViewSheet(after action: @escaping (Navigation) -> ()) -> some View {
         modifier(ActionDismissNavigationViewSheet(action: action))
     }
     
@@ -74,13 +74,13 @@ extension View {
         }, onDismiss: onDismiss))
     }
     
-    public func presents<Destination: View>(_ destination: Destination, after action: @escaping (NavigationToken) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
+    public func presents<Destination: View>(_ destination: Destination, after action: @escaping (Navigation) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(ActionPresent(destination: {
             destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
         }, action: action))
     }
     
-    public func presents<Destination: View>(_ destination: Destination, onDismiss: (() -> Void)?, after action: @escaping (NavigationToken) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
+    public func presents<Destination: View>(_ destination: Destination, onDismiss: (() -> Void)?, after action: @escaping (Navigation) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(ActionPresentOnDismiss(destination: {
             destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
         }, onDismiss: onDismiss, action: action))
@@ -114,7 +114,7 @@ extension View {
         }, onDismiss: onDismiss))
     }
     
-    public func presentsNavigationView<Destination: View>(_ destination: Destination, after action: @escaping (NavigationToken) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
+    public func presentsNavigationView<Destination: View>(_ destination: Destination, after action: @escaping (Navigation) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(ActionPresentNavigationView(destination: {
             NavigationView {
                 destination.allowsSwipeToDismiss(allowsSwipeToDismiss)
@@ -122,7 +122,7 @@ extension View {
         }, action: action))
     }
     
-    public func presentsNavigationView<Destination: View>(_ destination: Destination, onDismiss: (() -> Void)?, after action: @escaping (NavigationToken) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
+    public func presentsNavigationView<Destination: View>(_ destination: Destination, onDismiss: (() -> Void)?, after action: @escaping (Navigation) -> (), allowsSwipeToDismiss: Bool = true) -> some View {
         modifier(ActionPresentNavigationViewOnDismiss(destination: {
             NavigationView {
                 destination.allowsSwipeToDismiss(allowsSwipeToDismiss)

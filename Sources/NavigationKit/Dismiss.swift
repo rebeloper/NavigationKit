@@ -19,7 +19,7 @@ struct Dismiss: ViewModifier {
 @available(iOS 13.0, *)
 struct ActionDismiss: ViewModifier {
     
-    var action: (NavigationToken) -> ()
+    var action: (Navigation) -> ()
 
     func body(content: Content) -> some View {
         ActionDismissLink(action: action) {
@@ -58,7 +58,7 @@ struct DismissNavigationViewSheet: ViewModifier {
 @available(iOS 13.0, *)
 struct ActionDismissNavigationViewSheet: ViewModifier {
     
-    var action: (NavigationToken) -> ()
+    var action: (Navigation) -> ()
     
     func body(content: Content) -> some View {
         ActionDismissNavigationViewLink(action: action) {

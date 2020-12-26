@@ -36,7 +36,7 @@ struct PresentOnDismiss<Destination: View>: ViewModifier {
 struct ActionPresent<Destination: View>: ViewModifier {
     
     var destination: () -> Destination
-    var action: (NavigationToken) -> ()
+    var action: (Navigation) -> ()
     
     func body(content: Content) -> some View {
         ActionPresentLink(destination: destination(), action: action) {
@@ -50,7 +50,7 @@ struct ActionPresentOnDismiss<Destination: View>: ViewModifier {
     
     var destination: () -> Destination
     var onDismiss: (() -> Void)?
-    var action: (NavigationToken) -> ()
+    var action: (Navigation) -> ()
     
     func body(content: Content) -> some View {
         ActionPresentOnDismissLink(destination: destination(), onDismiss: onDismiss, action: action) {
@@ -113,7 +113,7 @@ struct PresentNavigationViewOnDismiss<Destination: View>: ViewModifier {
 struct ActionPresentNavigationView<Destination: View>: ViewModifier {
     
     var destination: () -> Destination
-    var action: (NavigationToken) -> ()
+    var action: (Navigation) -> ()
     
     func body(content: Content) -> some View {
         ActionPresentNavigationViewLink(destination: destination(), action: action) {
@@ -127,7 +127,7 @@ struct ActionPresentNavigationViewOnDismiss<Destination: View>: ViewModifier {
     
     var destination: () -> Destination
     var onDismiss: (() -> Void)?
-    var action: (NavigationToken) -> ()
+    var action: (Navigation) -> ()
     
     func body(content: Content) -> some View {
         ActionPresentOnDismissNavigationViewLink(destination: destination(), onDismiss: onDismiss, action: action) {
