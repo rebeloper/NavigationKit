@@ -3,6 +3,7 @@
 ![swift v5.3](https://img.shields.io/badge/swift-v5.3-orange.svg)
 ![platform iOS](https://img.shields.io/badge/platform-iOS-blue.svg)
 ![deployment target iOS 14](https://img.shields.io/badge/deployment%20target-iOS%2014-blueviolet)
+![version](https://img.shields.io/github/package-json/v/rebeloper/NavigationKit)
 
 **NavigationKit** is a lightweight library which makes `SwiftUI` navigation super easy to use.
 
