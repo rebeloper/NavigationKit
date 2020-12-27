@@ -3,6 +3,9 @@
 ![swift v5.3](https://img.shields.io/badge/swift-v5.3-orange.svg)
 ![platform iOS](https://img.shields.io/badge/platform-iOS-blue.svg)
 ![deployment target iOS 14](https://img.shields.io/badge/deployment%20target-iOS%2014-blueviolet)
+![YouTube tutorial](https://img.shields.io/badge/YouTube-video%20tutorial-red)
+
+
 
 **NavigationKit** is a lightweight library which makes `SwiftUI` navigation super easy to use.
 
@@ -132,7 +135,6 @@ struct Tab_0_0_View: View {
 
 Make sure you are using a view model in order for values to persist between push/pop operations. SwiftUI resets all the properties of a view marked with `@State` every time the view is removed from a view hierarchy. For the `NavigationKitView` this is a problem because when I come back to a previous view (with a pop operation) I want all my view controls to be as I left them before (for example I want my `TextField`s to contain the text I previously typed in). It seems that the solution to this problem is using the `.id` modifier specifying an id for the views I don't want SwiftUI to reset. According to the Apple documentation the `.id` modifier:
 
-> Summary
 > Generates a uniquely identified view that can be inserted or removed.
 
 but again, it seems that this API is currently not working as expected (take a look at this interesting post: https://swiftui-lab.com/swiftui-id/). In order to workaround this problem, then, you have to use `@ObservableObject` when you need to make some state persist between push/pop operations.
@@ -205,7 +207,7 @@ Button {
     Text("Pop to Tab_0_1_View")
 }
 ```
-We can also pot to root like so:
+We can also pop to root like so:
 ```
 Button {
     navigation.pop(to: .root)
