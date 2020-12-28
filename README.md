@@ -269,7 +269,7 @@ VStack {
 Presenting a modal is a bit diferent than pushing:
 
 1. create a `@State` variable for your view;
-2. add a `Sheet` or `FullScreenSheet` view. You must add it to the view hierarchy. Don't worry they are `EmptyView`s;
+2. add a `Sheet` or `FullScreenSheet` view with an optional `onDismiss` callback. You must add it to the view hierarchy. Don't worry they are `EmptyView`s;
 3. activate the modal with `present()`
 
 **IMPORTANT NOTE**: you can present a `NavigationKitView` inside a `Sheet` / `FullScreenSheet` 😎
@@ -283,9 +283,26 @@ struct Tab_1_0_View: View {
     @State private var navigationForTab_0_0_View = false
     @State private var navigationForTab_1_1_View = false
     
+    @State private var navigationForTab_0_0_View_onDismiss = false
+    @State private var navigationForTab_1_1_View_onDismiss = false
+    
     var body: some View {
         VStack {
-            Color(.systemTeal)
+            Button {
+                // 3.
+                navigationForTab_0_0_View_onDismiss.present()
+            } label: {
+                Text("Present with onDismiss callback")
+            }
+            
+            Button {
+                // 3.
+                navigationForTab_1_1_View_onDismiss.present()
+            } label: {
+                Text("Present with onDismiss callback")
+            }
+            
+            Spacer()
             
             // 2.
             Sheet(isPresented: $navigationForTab_0_0_View) {
@@ -294,12 +311,32 @@ struct Tab_1_0_View: View {
                 }
             }
             
+            // 2.
             FullScreenSheet(isPresented: $navigationForTab_1_1_View) {
                 NavigationKitView {
                     Tab_1_1_View()
                 }
             }
+            
+            // 2.
+            Sheet(isPresented: $navigationForTab_0_0_View_onDismiss) {
+                print("Dismissed Sheet. Do something here.")
+            } content: {
+                NavigationKitView {
+                    Tab_0_0_View()
+                }
+            }
+            
+            // 2.
+            FullScreenSheet(isPresented: $navigationForTab_1_1_View_onDismiss) {
+                print("Dismissed FullScreenSheet. Do something here.")
+            } content: {
+                NavigationKitView {
+                    Tab_1_1_View()
+                }
+            }
         }
+        .padding()
         .largeNavigationBar(titleView:
                     Text("Tab_1_0_View").bold().lineLimit(1),
                 leadingView:
