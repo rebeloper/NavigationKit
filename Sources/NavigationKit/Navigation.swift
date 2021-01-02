@@ -33,10 +33,12 @@ public class Navigation: ObservableObject {
     
     private var viewStack = ViewStack() {
         didSet {
+            previousView = viewStack.previous()
             currentView = viewStack.peek()
         }
     }
-
+    
+    @Published fileprivate var previousView: ViewElement?
     @Published fileprivate var currentView: ViewElement?
 
     /// Navigates to a view.
@@ -69,6 +71,14 @@ public class Navigation: ObservableObject {
     //the actual stack
     private struct ViewStack {
         private var views = [ViewElement]()
+        
+        func previous() -> ViewElement? {
+            if views.count >= 1 {
+                return views[views.count - 1]
+            } else {
+                return nil
+            }
+        }
 
         func peek() -> ViewElement? {
             views.last
@@ -143,10 +153,18 @@ public struct NavigationKitView<Root>: View where Root: View {
                         .transition(navigationType == .push ? transitions.push : transitions.pop)
                         .environmentObject(navViewModel)
                 } else {
-                    navViewModel.currentView!.wrappedElement
-                        .id(navViewModel.currentView!.id)
-                        .transition(navigationType == .push ? transitions.push : transitions.pop)
-                        .environmentObject(navViewModel)
+                    ZStack {
+                        navViewModel.previousView?.wrappedElement
+                            .id(navViewModel.previousView?.id)
+                            .transition(navigationType == .push ? transitions.push : transitions.pop)
+                            .environmentObject(navViewModel)
+                        
+                        navViewModel.currentView!.wrappedElement
+                            .id(navViewModel.currentView!.id)
+                            .transition(navigationType == .push ? transitions.push : transitions.pop)
+                            .environmentObject(navViewModel)
+                    }
+                    
                 }
             }
         }
