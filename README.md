@@ -18,7 +18,7 @@ Download and include the `NavigationKit` folder and files in your codebase.
 
 ### 📲 Requirements
 - iOS 14+
-- Swift 5
+- Swift 5.3+
 
 ## 🎬 Video Tutorial
 
