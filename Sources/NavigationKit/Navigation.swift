@@ -156,7 +156,7 @@ public struct NavigationKitView<Root>: View where Root: View {
                     ZStack {
                         navViewModel.previousView?.wrappedElement
                             .id(navViewModel.previousView?.id)
-                            .transition(navigationType == .push ? transitions.push : transitions.pop)
+//                            .transition(navigationType == .push ? transitions.push : transitions.pop)
                             .environmentObject(navViewModel)
                         
                         navViewModel.currentView!.wrappedElement
