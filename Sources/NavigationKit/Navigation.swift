@@ -73,7 +73,7 @@ public class Navigation: ObservableObject {
         private var views = [ViewElement]()
         
         func previous() -> ViewElement? {
-            if views.count >= 1 {
+            if views.count > 1 {
                 return views[views.count - 1]
             } else {
                 return nil
