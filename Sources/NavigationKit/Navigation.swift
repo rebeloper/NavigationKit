@@ -43,25 +43,29 @@ public class Navigation: ObservableObject {
     /// - Parameters:
     ///   - element: The destination view.
     ///   - identifier: The ID of the destination view (used to easily come back to it if needed).
-    public func push<Element: View>(_ element: Element, withId identifier: String? = nil) {
-        withAnimation(easing) {
-            navigationType = .push
-            viewStack.push(ViewElement(id: identifier == nil ? UUID().uuidString : identifier!, wrappedElement: AnyView(element)))
+    public func push<Element: View>(_ element: Element, withId identifier: String? = nil, delay: TimeInterval = 0.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            withAnimation(self.easing) {
+                self.navigationType = .push
+                self.viewStack.push(ViewElement(id: identifier == nil ? UUID().uuidString : identifier!, wrappedElement: AnyView(element)))
+            }
         }
     }
 
     /// Navigates back to a previous view.
     /// - Parameter to: The destination type of the transition operation.
-    public func pop(to: PopDestination = .previous) {
-        withAnimation(easing) {
-            navigationType = .pop
-            switch to {
-            case .root:
-                viewStack.popToRoot()
-            case .view(let viewId):
-                viewStack.popToView(withId: viewId)
-            default:
-                viewStack.popToPrevious()
+    public func pop(to: PopDestination = .previous, delay: TimeInterval = 0.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            withAnimation(self.easing) {
+                self.navigationType = .pop
+                switch to {
+                case .root:
+                    self.viewStack.popToRoot()
+                case .view(let viewId):
+                    self.viewStack.popToView(withId: viewId)
+                default:
+                    self.viewStack.popToPrevious()
+                }
             }
         }
     }
