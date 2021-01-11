@@ -109,7 +109,7 @@ Attaching the easing directly to the transition? **Don't do this**. SwiftUI has 
 
 ## ⬅️ Push
 
-In order to navigate forward you have to `push`:
+In order to navigate forward you have to `push` with an optional `delay`:
 
 ```
 import NavigationKit
@@ -121,7 +121,7 @@ struct Tab_0_0_View: View {
     var body: some View {
         VStack {
             Button {
-                navigation.push(Tab_0_1_View())
+                navigation.push(Tab_0_1_View(), delay: 1.5)
             } label: {
                 Text("Next")
             }
@@ -188,11 +188,11 @@ You will be able to `pop` to this view using the `id`. Read on. 🤓
 
 ## ➡️ Pop
 
-Pop operation works as the push operation:
+Pop operation works as the push operation, with an optional `delay`:
 
 ```
 Button {
-    navigation.pop()
+    navigation.pop(delay: 1.5)
 } label: {
     Label("Back", systemImage: "chevron.backward")
 }
