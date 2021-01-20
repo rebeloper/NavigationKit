@@ -53,18 +53,6 @@ struct InlineNavigationBarViewModifier<TitleView: View, LeadingView: View, Trail
     }
 }
 
-struct LargeNavigationBarViewModifier<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View>: ViewModifier {
-    
-    var titleView: () -> TitleView
-    var leadingView: () -> LeadingView
-    var trailingView: () -> TrailingView
-    var backgroundView: () -> BackgroundView
-    
-    func body(content: Content) -> some View {
-        LargeNavigationBarView(titleView: titleView(), leadingView: leadingView(), trailingView: trailingView(), backgroundView: backgroundView(), content: content)
-    }
-}
-
 extension View {
     public func inlineNavigationBar<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View>(titleView: TitleView, leadingView: LeadingView, trailingView: TrailingView, backgroundView: BackgroundView) -> some View {
         modifier(InlineNavigationBarViewModifier(titleView: {
