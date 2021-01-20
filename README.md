@@ -216,13 +216,14 @@ Button {
 
 ## 🚧 NavigationBar
 
-`NavigationKit` replaces `NavigationView` altogether. In order to see a navigation bar you can create your own or use the built in view modifiers:
+`NavigationKit` replaces `NavigationView` altogether. In order to see a navigation bar you can create your own or use the built in view modifiers. You must add them as a modifier of a `VStack` which contains a `Spacer` to push its content up.
 
 ### Inline navigation bar
 
 ```
 VStack {
     ...
+    Spacer()
 }
 .inlineNavigationBar(titleView:
             Text("Tab_0_1_View").bold(),
@@ -239,7 +240,7 @@ VStack {
                 Text("Next")
             },
         backgroundView:
-            Color(.tertiarySystemBackground).edgesIgnoringSafeArea(.top)
+            Color(.secondarySystemBackground).edgesIgnoringSafeArea(.top)
 )
 ```
 
@@ -248,6 +249,7 @@ VStack {
 ```
 VStack {
     ...
+    Spacer()
 }
 .largeNavigationBar(titleView:
             Text("Tab_0_0_View").bold().lineLimit(1),
@@ -260,8 +262,33 @@ VStack {
                 Text("Next")
             },
         backgroundView:
-            Color(.tertiarySystemBackground).edgesIgnoringSafeArea(.top)
+            Color(.secondarySystemBackground).edgesIgnoringSafeArea(.top)
 )
+```
+
+### Custom navigation bar
+
+```
+var body: some View {
+    VStack {
+        ...
+        Spacer()
+    }.customNavigationBar(titleView:
+                            HStack {
+                                Text("TODAY").font(.title).fontWeight(.light)
+                                Spacer()
+                                Text(todayString().uppercased()).font(.title).fontWeight(.light)
+                            },
+                          backgroundView:
+                            Color(.secondarySystemBackground).edgesIgnoringSafeArea(.top)
+    )
+}
+
+func todayString() -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "EEE MM/dd"
+    return formatter.string(from: Date())
+}
 ```
 
 ## ⬆️ Present
