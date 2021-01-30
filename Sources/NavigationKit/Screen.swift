@@ -17,7 +17,7 @@ public struct Screen<Content>: View where Content: View {
 
     public var body: some View {
         ZStack {
-            Color(.systemBackground).edgesIgnoringSafeArea(.all)
+            Color.clear.edgesIgnoringSafeArea(.all)
             content()
         }
     }
