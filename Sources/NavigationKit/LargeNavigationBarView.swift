@@ -38,7 +38,7 @@ public struct LargeNavigationBarView<TitleView: View, LeadingView: View, Trailin
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
                 .background(backgroundView)
-                Divider().padding(.horizontal, -50)
+                Divider().ignoresSafeArea()
                 Spacer().frame(height: 0)
                 content.frame(width: proxy.size.width)
             }

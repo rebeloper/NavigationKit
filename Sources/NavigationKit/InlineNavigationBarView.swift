@@ -33,7 +33,7 @@ public struct InlineNavigationBarView<TitleView: View, LeadingView: View, Traili
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
                 .background(backgroundView)
-                Divider().padding(.horizontal, -50)
+                Divider().ignoresSafeArea()
                 Spacer().frame(height: 0)
                 content
             }
