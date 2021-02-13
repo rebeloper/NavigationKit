@@ -15,7 +15,7 @@ public struct LargeNavigationBarView<TitleView: View, LeadingView: View, Trailin
     public let content: Content
     
     public var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { proxy in
             VStack(alignment: .center, spacing: 0) {
                 VStack(spacing: 12) {
                     HStack {
@@ -38,10 +38,10 @@ public struct LargeNavigationBarView<TitleView: View, LeadingView: View, Trailin
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
                 .background(backgroundView)
-                Divider()
+                Divider().padding(.horizontal, -50)
                 Spacer().frame(height: 0)
-                content
-            }.asScreen()
+                content.frame(width: proxy.size.width)
+            }
         }
     }
 }

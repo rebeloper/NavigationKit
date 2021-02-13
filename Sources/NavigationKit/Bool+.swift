@@ -11,10 +11,9 @@ public extension Bool {
     mutating func dismiss() {
         self = false
     }
-}
-
-public extension Bool {
+    
     mutating func present() {
         self = true
     }
 }
+

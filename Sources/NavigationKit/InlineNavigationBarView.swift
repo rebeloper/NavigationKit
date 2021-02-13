@@ -15,28 +15,28 @@ public struct InlineNavigationBarView<TitleView: View, LeadingView: View, Traili
     public let content: Content
     
     public var body: some View {
-        GeometryReader { geometry in
+        GeometryReader { proxy in
             VStack(alignment: .center, spacing: 0) {
                 HStack {
                     HStack {
                         leadingView
                         Spacer()
-                    }.frame(width: geometry.size.width * 0.25)
+                    }.frame(width: proxy.size.width * 0.25)
                     Spacer()
                     titleView
                     Spacer()
                     HStack {
                         Spacer()
                         trailingView
-                    }.frame(width: geometry.size.width * 0.25)
+                    }.frame(width: proxy.size.width * 0.25)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 8)
                 .background(backgroundView)
-                Divider()
+                Divider().padding(.horizontal, -50)
                 Spacer().frame(height: 0)
                 content
-            }.asScreen()
+            }
         }
     }
 }
