@@ -8,16 +8,16 @@
 import SwiftUI
 
 public struct NKPushLink<Destination: View>: View {
-    @Binding private var isActive: Bool
+    @Binding private var root: Bool
     private let destination: () -> Destination
     
-    public init(isActive: Binding<Bool>, destination: @escaping () -> Destination) {
-        self._isActive = isActive
+    public init(root: Binding<Bool>, destination: @escaping () -> Destination) {
+        self._root = root
         self.destination = destination
     }
     
     public var body: some View {
-        NavigationLink(destination: destination(), isActive: $isActive) {
+        NavigationLink(destination: destination(), isActive: $root) {
             EmptyView()
         }.isDetailLink(false)
     }

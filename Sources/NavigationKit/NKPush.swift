@@ -8,21 +8,21 @@
 import SwiftUI
 
 public struct NKPush<Destination: View, Label: View>: View {
-    @Binding private var isActive: Bool
-    private let isActiveSet: Bool
+    @Binding private var root: Bool
+    private let isRootSet: Bool
     private let destination: () -> Destination
     private let label: () -> Label
     
-    public init(isActive: Binding<Bool>? = nil, destination: @escaping () -> Destination, label: @escaping () -> Label) {
-        self._isActive = isActive ?? Binding.constant(false)
-        self.isActiveSet = isActive != nil
+    public init(root: Binding<Bool>? = nil, destination: @escaping () -> Destination, label: @escaping () -> Label) {
+        self._root = root ?? Binding.constant(false)
+        self.isRootSet = root != nil
         self.destination = destination
         self.label = label
     }
     
     public var body: some View {
-        if isActiveSet {
-            NavigationLink(destination: destination(), isActive: $isActive) {
+        if isRootSet {
+            NavigationLink(destination: destination(), isActive: $root) {
                 label()
             }.isDetailLink(false)
         } else {

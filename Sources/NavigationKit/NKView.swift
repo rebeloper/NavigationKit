@@ -8,11 +8,11 @@
 import SwiftUI
 
 public struct NKView<Content: View>: View {
-    @Binding private var isActive : Bool
+    @Binding private var root : Bool
     private let content: () -> Content
     
-    public init(isActive: Binding<Bool>, content: @escaping () -> Content) {
-        self._isActive = isActive
+    public init(root: Binding<Bool>, content: @escaping () -> Content) {
+        self._root = root
         self.content = content
     }
     
@@ -21,6 +21,6 @@ public struct NKView<Content: View>: View {
             content()
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .environment(\.rootPresentationMode, $isActive)
+        .environment(\.rootPresentationMode, $root)
     }
 }
