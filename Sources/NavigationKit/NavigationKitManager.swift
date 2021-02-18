@@ -12,7 +12,7 @@ public struct NavigationKitManager {
         presentationMode.wrappedValue.dismiss()
     }
     
-    public static func dismiss(with rootPresentationMode: Binding<RootPresentationMode>) {
+    public static func popToRoot(with rootPresentationMode: Binding<RootPresentationMode>) {
         rootPresentationMode.wrappedValue.dismiss()
     }
     
