@@ -1,5 +1,5 @@
 //
-//  NKView.swift
+//  NavigationKitView.swift
 //  
 //
 //  Created by Alex Nagy on 13.02.2021.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-public struct NKView<Content: View>: View {
-    @Binding private var root : Bool
+public struct NavigationKitView<Content: View>: View {
+    @Binding private var isActive : Bool
     private let content: () -> Content
     
-    public init(root: Binding<Bool>, content: @escaping () -> Content) {
-        self._root = root
+    public init(isActive: Binding<Bool>, content: @escaping () -> Content) {
+        self._isActive = isActive
         self.content = content
     }
     
@@ -21,6 +21,6 @@ public struct NKView<Content: View>: View {
             content()
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .environment(\.rootPresentationMode, $root)
+        .environment(\.rootPresentationMode, $isActive)
     }
 }
