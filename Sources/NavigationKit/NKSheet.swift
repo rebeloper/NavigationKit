@@ -1,5 +1,5 @@
 //
-//  NavigationKitSheet.swift
+//  NKSheet.swift
 //  
 //
 //  Created by Alex Nagy on 18.02.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct NavigationKitSheet<Destination: View, Label: View>: View {
+public struct NKSheet<Destination: View, Label: View>: View {
     
     @Environment(\.presentationsMode) private var presentationsMode
     

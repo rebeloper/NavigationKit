@@ -1,5 +1,5 @@
 //
-//  NavigationKitLink.swift
+//  NKPush.swift
 //  
 //
 //  Created by Alex Nagy on 13.02.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct NavigationKitLink<Destination: View, Label: View>: View {
+public struct NKPush<Destination: View, Label: View>: View {
     @Binding private var isActive: Bool
     private let destination: () -> Destination
     private let label: () -> Label

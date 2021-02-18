@@ -38,7 +38,7 @@ struct CustomNavigationBarViewModifier<TitleView: View, BackgroundView: View>: V
 }
 
 extension View {
-    public func customNavigationBar<TitleView: View, BackgroundView: View>(titleView: TitleView, backgroundView: BackgroundView) -> some View {
+    public func nkCustomNavigationBar<TitleView: View, BackgroundView: View>(titleView: TitleView, backgroundView: BackgroundView) -> some View {
         modifier(CustomNavigationBarViewModifier(titleView: {
             titleView
         }, backgroundView: {

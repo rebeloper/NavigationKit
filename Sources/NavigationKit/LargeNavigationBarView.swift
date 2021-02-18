@@ -59,7 +59,7 @@ struct LargeNavigationBarViewModifier<TitleView: View, LeadingView: View, Traili
 }
 
 extension View {
-    public func largeNavigationBar<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View>(titleView: TitleView, leadingView: LeadingView, trailingView: TrailingView, backgroundView: BackgroundView) -> some View {
+    public func nkLargeNavigationBar<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View>(titleView: TitleView, leadingView: LeadingView, trailingView: TrailingView, backgroundView: BackgroundView) -> some View {
         modifier(LargeNavigationBarViewModifier(titleView: {
             titleView
         }, leadingView: {

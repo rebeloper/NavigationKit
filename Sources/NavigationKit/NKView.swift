@@ -1,5 +1,5 @@
 //
-//  NavigationKitView.swift
+//  NKView.swift
 //  
 //
 //  Created by Alex Nagy on 13.02.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct NavigationKitView<Content: View>: View {
+public struct NKView<Content: View>: View {
     @Binding private var isActive : Bool
     private let content: () -> Content
     

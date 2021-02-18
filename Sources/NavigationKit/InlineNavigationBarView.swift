@@ -54,7 +54,7 @@ struct InlineNavigationBarViewModifier<TitleView: View, LeadingView: View, Trail
 }
 
 extension View {
-    public func inlineNavigationBar<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View>(titleView: TitleView, leadingView: LeadingView, trailingView: TrailingView, backgroundView: BackgroundView) -> some View {
+    public func nkInlineNavigationBar<TitleView: View, LeadingView: View, TrailingView: View, BackgroundView: View>(titleView: TitleView, leadingView: LeadingView, trailingView: TrailingView, backgroundView: BackgroundView) -> some View {
         modifier(InlineNavigationBarViewModifier(titleView: {
             titleView
         }, leadingView: {
