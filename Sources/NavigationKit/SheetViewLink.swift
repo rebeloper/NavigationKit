@@ -1,5 +1,5 @@
 //
-//  NKSheetLink.swift
+//  SheetViewLink.swift
 //  
 //
 //  Created by Alex Nagy on 18.02.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct NKSheetLink<Destination: View>: View {
+public struct SheetViewLink<Destination: View>: View {
     
     @Environment(\.presentationsMode) private var presentationsMode
     

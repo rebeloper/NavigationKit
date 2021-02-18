@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct NKPushLink<Destination: View>: View {
+public struct PushViewLink<Destination: View>: View {
     @Binding private var isActive: Bool
     private let destination: () -> Destination
     

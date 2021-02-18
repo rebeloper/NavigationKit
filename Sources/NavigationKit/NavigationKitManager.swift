@@ -1,5 +1,5 @@
 //
-//  NKManager.swift
+//  NavigationKitManager.swift
 //  
 //
 //  Created by Alex Nagy on 18.02.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct NKManager {
+public struct NavigationKitManager {
     public static func dismiss(with presentationMode: Binding<PresentationMode>) {
         presentationMode.wrappedValue.dismiss()
     }

@@ -1,5 +1,5 @@
 //
-//  NKFullScreenCover.swift
+//  SheetView.swift
 //  
 //
 //  Created by Alex Nagy on 18.02.2021.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct NKFullScreenCover<Destination: View, Label: View>: View {
+public struct SheetView<Destination: View, Label: View>: View {
     
     @Environment(\.presentationsMode) private var presentationsMode
     
@@ -29,7 +29,7 @@ public struct NKFullScreenCover<Destination: View, Label: View>: View {
         } label: {
             label()
         }
-        .fullScreenCover(isPresented: $isActive, onDismiss: onDismiss) {
+        .sheet(isPresented: $isActive, onDismiss: onDismiss) {
             destination()
                 .environment(\.presentationsMode, presentationsMode + [$isActive])
         }
