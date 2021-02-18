@@ -12,6 +12,10 @@ public struct NavigationKitManager {
         presentationMode.wrappedValue.dismiss()
     }
     
+    public static func dismiss(with rootPresentationMode: Binding<RootPresentationMode>) {
+        rootPresentationMode.wrappedValue.dismiss()
+    }
+    
     public static func dismissTwo(with presentationsMode: [Binding<RootPresentationMode>]) {
         presentationsMode.forEach {
             $0.wrappedValue.dismiss()
