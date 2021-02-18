@@ -8,11 +8,11 @@
 import SwiftUI
 
 public struct NKManager {
-    public static func dismiss(with presentationMode: Binding<Bool>) {
+    public static func dismiss(with presentationMode: Binding<PresentationMode>) {
         presentationMode.wrappedValue.dismiss()
     }
     
-    public static func dismissTwo(with presentationsMode: [Binding<Bool>]) {
+    public static func dismissTwo(with presentationsMode: [Binding<RootPresentationMode>]) {
         presentationsMode.forEach {
             $0.wrappedValue.dismiss()
         }

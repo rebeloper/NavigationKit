@@ -8,11 +8,11 @@
 import SwiftUI
 
 public struct PresentationsModeKey: EnvironmentKey {
-    public static let defaultValue: [Binding<Bool>] = []
+    public static let defaultValue: [Binding<PresentationsMode>] = []
 }
 
 extension EnvironmentValues {
-    public var presentationsMode: [Binding<Bool>] {
+    public var presentationsMode: [Binding<PresentationsMode>] {
         get { return self[PresentationsModeKey] }
         set { self[PresentationsModeKey] = newValue }
     }

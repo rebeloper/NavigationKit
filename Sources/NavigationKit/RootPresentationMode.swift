@@ -13,8 +13,8 @@ public struct RootPresentationModeKey: EnvironmentKey {
 
 extension EnvironmentValues {
     public var rootPresentationMode: Binding<RootPresentationMode> {
-        get { return self[RootPresentationModeKey.self] }
-        set { self[RootPresentationModeKey.self] = newValue }
+        get { return self[RootPresentationModeKey] }
+        set { self[RootPresentationModeKey] = newValue }
     }
 }
 
