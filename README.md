@@ -5,6 +5,7 @@
 ![deployment target iOS 14](https://img.shields.io/badge/deployment%20target-iOS%2014-blueviolet)
 ![YouTube tutorial](https://img.shields.io/badge/YouTube-video%20tutorial-red)
 
+**New version available here:** https://github.com/rebeloper/NavigationKitDemo
 **NavigationKit** is a lightweight library which makes `SwiftUI` navigation super easy to use.
 
 ## 💻 Installation
